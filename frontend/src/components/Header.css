@@ -15,12 +15,77 @@
   justify-content: space-between;
 }
 
+.header__content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header__admin-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #667eea;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.header__admin-link:hover {
+  color: #764ba2;
+}
+
+.header__logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0;
+}
+
+.header__logout-btn:hover {
+  background: #dc2626;
+}
+
 .header__brand {
-  font-size: 1.25rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: #111827;
   text-decoration: none;
   letter-spacing: -0.02em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.header__order-btn {
+  background: #111827;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.header__order-btn:hover {
+  background: #374151;
 }
 
 .header__btn {
@@ -40,4 +105,36 @@
 .header__btn:hover {
   background: #374151;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .header__content {
+    gap: 1rem;
+  }
+
+  .header__brand {
+    font-size: 1.5rem;
+  }
+
+  .header__order-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__content {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .header__brand {
+    font-size: 1.1rem;
+    flex-basis: 100%;
+  }
+
+  .header__order-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
 }

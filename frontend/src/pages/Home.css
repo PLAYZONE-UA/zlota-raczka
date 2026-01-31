@@ -8,7 +8,7 @@
 .home__hero {
   max-width: 72rem;
   margin: 0 auto;
-  padding: 5rem 1.5rem;
+  padding: 2rem 1.5rem 1.2rem 1.5rem;
 }
 
 .home__hero-grid {
@@ -31,19 +31,22 @@
 }
 
 .home__hero-h1 {
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -.03em;
   color: #111827;
   margin-bottom: 1.5rem;
+  white-space: nowrap;
 }
 
 .home__hero-p {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: #4b5563;
   line-height: 1.7;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  margin-top: -1rem;
 }
 
 .home__hero-btns {
@@ -111,7 +114,7 @@
 /* ─── SERVICES ──────────────────────────────── */
 .home__services {
   background: #f9fafb;
-  padding: 5rem 1.5rem;
+  padding: 3rem 1.5rem;
 }
 
 .home__services-wrap {
@@ -125,7 +128,7 @@
   text-align: center;
   color: #111827;
   letter-spacing: -.025em;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .home__svc-grid {
@@ -148,8 +151,9 @@
 
 .home__svc-icon {
   color: #374151;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   display: block;
+  width: 22px;
 }
 
 .home__svc-h3 {
@@ -165,46 +169,6 @@
   line-height: 1.55;
 }
 
-/* ─── TRUST ─────────────────────────────────── */
-.home__trust {
-  padding: 5rem 1.5rem;
-}
-
-.home__trust-grid {
-  max-width: 56rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-}
-
-.home__trust-card {
-  padding: 1.5rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 1rem;
-  text-align: center;
-  transition: border-color .25s, transform .25s;
-}
-.home__trust-card:hover {
-  border-color: #111827;
-  transform: translateY(-2px);
-}
-
-.home__trust-val {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #111827;
-  letter-spacing: -.025em;
-  margin-bottom: .25rem;
-}
-
-.home__trust-label {
-  display: block;
-  font-size: .8rem;
-  color: #6b7280;
-}
-
 /* ─── RESPONSIVE ────────────────────────────── */
 @media (max-width: 900px) {
   .home__svc-grid {
@@ -213,16 +177,23 @@
 }
 
 @media (max-width: 700px) {
-  .home__hero        { padding: 3rem 1.5rem; }
+  .home__hero        { padding: 2rem 1.5rem 0.5rem 1.5rem; }
   .home__hero-grid   { grid-template-columns: 1fr; gap: 2rem; }
   .home__hero-img    { height: 260px; order: -1; }
-  .home__svc-grid    { grid-template-columns: 1fr; }
-  .home__trust-grid  { grid-template-columns: repeat(2, 1fr); }
+  .home__services    { padding: 2rem 1.5rem; }
+  .home__services-h2 { margin-bottom: 1.5rem; font-size: 1.5rem; }
+  .home__svc-grid    { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+  .home__svc        { padding: 1rem; }
+  .home__svc-h3     { font-size: 0.95rem; }
+  .home__svc-p      { font-size: 0.8rem; }
 }
 
 @media (max-width: 480px) {
   .home__hero-h1     { font-size: 2rem; }
   .home__hero-p      { font-size: 1rem; }
-  .home__trust-grid  { gap: .75rem; }
-  .home__trust-card  { padding: 1rem; }
+  .home__svc-grid    { grid-template-columns: repeat(3, 1fr); gap: 0.65rem; }
+  .home__svc        { padding: 0.75rem; }
+  .home__svc-h3     { font-size: 0.85rem; margin-bottom: 0.3rem; }
+  .home__svc-p      { font-size: 0.7rem; line-height: 1.35; }
+  .home__svc-icon   { width: 18px; margin-bottom: 0.4rem; }
 }

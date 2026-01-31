@@ -5,6 +5,7 @@ import OrderModal from './components/OrderModal'
 import { OrderModalProvider } from './contexts/OrderModalContext'
 import Home from './pages/Home'
 import Order from './pages/Order'
+import Login from './pages/Login'
 import Admin from './pages/Admin'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -20,6 +21,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/zamowienie" element={<Order />} />
               <Route path="/zamovlennya" element={<Order />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </main>

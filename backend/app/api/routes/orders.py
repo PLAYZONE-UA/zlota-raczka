@@ -36,6 +36,13 @@ async def create_order(
         if not result.scalar_one_or_none():
             raise HTTPException(status_code=400, detail="Номер телефону не верифіковано")
         
+        # Check max 2 orders per phone number
+        count_stmt = select(func.count()).select_from(Order).where(Order.phone == phone)
+        count_result = await db.execute(count_stmt)
+        order_count = count_result.scalar()
+        if order_count >= 2:
+            raise HTTPException(status_code=400, detail="Już masz maksymalnie 2 zamówienia. Skontaktuj się bezpośrednio, aby uzyskać więcej szczegółów.")
+        
         # Validate text fields
         if not validate_text_length(address, 5, 255):
             raise HTTPException(status_code=400, detail="Адреса повинна бути від 5 до 255 символів")
@@ -283,8 +290,8 @@ async def get_occupied_dates(db: AsyncSession = Depends(get_db)):
         result = await db.execute(stmt)
         dates_data = result.all()
         
-        # Get settings (defaults to 5 orders per day)
-        max_orders_per_day = 5
+        # Get settings (defaults to 2 orders per day)
+        max_orders_per_day = 2
         
         occupied_dates = []
         for date_str, count in dates_data:

@@ -16,11 +16,14 @@ function Admin() {
   const fetchOrders = async () => {
     setIsLoading(true)
     try {
+      console.log('Fetching orders from:', 'http://localhost:8000/api/orders')
       const response = await ordersApi.getAll()
+      console.log('Orders response:', response.data)
       setOrders(response.data)
     } catch (error) {
       console.error('Error fetching orders:', error)
-      toast.error('Nie udało się załadować zamówienia')
+      console.error('Error details:', error.response?.data, error.message)
+      toast.error('Nie udało się załadować zamówienia: ' + error.message)
     } finally {
       setIsLoading(false)
     }
@@ -196,14 +199,30 @@ function Admin() {
             </button>
             <h2>Zdjęcia - Zamówienie #{selectedOrder.id}</h2>
             <div className="modal-photos">
-              {selectedOrder.photos.map((photo, index) => (
-                <div key={index} className="modal-photo">
-                  <img
-                    src={`/uploads/photos/${photo}`}
-                    alt={`Фото ${index + 1}`}
-                  />
-                </div>
-              ))}
+              {Array.isArray(selectedOrder.photos) ? (
+                selectedOrder.photos.map((photo, index) => {
+                  // Якщо фото - це рядок (ім'я файлу)
+                  const photoUrl = typeof photo === 'string' 
+                    ? `http://127.0.0.1:8000/uploads/photos/${photo}`
+                    : `http://127.0.0.1:8000/uploads/photos/${photo.filename || photo}`;
+                  
+                  return (
+                    <div key={index} className="modal-photo">
+                      <img
+                        src={photoUrl}
+                        alt={`Фото ${index + 1}`}
+                        onError={(e) => {
+                          console.error('Image failed to load:', photoUrl);
+                          e.target.src = '/uploads/placeholder.png'; // Якщо є placeholder
+                        }}
+                      />
+                      <p>Фото {index + 1}</p>
+                    </div>
+                  );
+                })
+              ) : (
+                <p>Немає фото</p>
+              )}
             </div>
           </div>
         </div>

@@ -72,12 +72,21 @@ class TelegramService:
         photo_count: int = 0
     ) -> str:
         """Format order notification message"""
+        from datetime import datetime
+        
+        # Format date from ISO format to readable format
+        try:
+            dt = datetime.fromisoformat(selected_date)
+            formatted_date = dt.strftime("%d.%m.%Y, %H:%M")
+        except:
+            formatted_date = selected_date
+        
         message = f"""
 🔔 <b>Nowe zamówienie #{order_id}</b>
 
 📱 <b>Telefon:</b> {phone}
 📍 <b>Adres:</b> {address}
-📅 <b>Data:</b> {selected_date}
+📅 <b>Data:</b> {formatted_date}
 
 📝 <b>Opis problemu:</b>
 {description}

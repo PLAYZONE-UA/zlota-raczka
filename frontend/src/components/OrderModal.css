@@ -108,6 +108,16 @@
   font-weight: 600;
   color: #333;
   font-size: 14px;
+  display: block;
+}
+
+.label-hint {
+  display: block;
+  font-weight: 400;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-top: 2px;
 }
 
 .form-col input {

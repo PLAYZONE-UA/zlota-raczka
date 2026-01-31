@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Union, Any
 from datetime import datetime
 
 
@@ -9,7 +9,7 @@ class OrderResponse(BaseModel):
     address: str
     description: str
     selected_date: str
-    photos: List[str] = []
+    photos: Union[List[str], dict, Any] = []
     status: str
     created_at: datetime
     updated_at: Optional[datetime]

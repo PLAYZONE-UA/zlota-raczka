@@ -11,13 +11,7 @@ const services = [
   { title: 'Hydraulika',     desc: 'Kran, syfon, uszczelnienia',            icon: Droplets },
   { title: 'Wiercenie',      desc: 'Ściany, sufity, montaż na ścianie',     icon: Wrench   },
   { title: 'Porządki',       desc: 'Garaż, piwnica, ogród',                icon: Trash2   },
-]
-
-const trust = [
-  { value: '5+ lat', label: 'Doświadczenia' },
-  { value: '100+',   label: 'Zleceń'        },
-  { value: '0 zł',   label: 'Zaliczek'      },
-  { value: '24h',    label: 'Szybki kontakt' },
+  { title: 'Prace blacharskie', desc: 'Obróbki, poprawki, drobne naprawy (bez dachów)', icon: Hammer },
 ]
 
 function Home() {
@@ -37,11 +31,8 @@ function Home() {
         <div className="home__hero-grid">
 
           <div className={`home__hero-text ${in_ ? 'home__hero-text--in' : ''}`}>
-            <h1 className="home__hero-h1">
-              Złota Rączka
-            </h1>
             <p className="home__hero-p">
-              Profesjonalne drobne naprawy i prace domowe w Legionowie i okolicach.<br />
+              Profesjonalne drobne naprawy i prace domowe w <strong style={{ fontWeight: '700' }}>Warszawie i okolicach.</strong><br />
               Oferujemy montaż, naprawy, drobne prace remontowe i pomoc w domu – szybko, uczciwie i bez problemów.
             </p>
             
@@ -54,10 +45,7 @@ function Home() {
               <li style={{ marginBottom: '8px' }}>✓ Drobne prace – bez dużych remontów</li>
               <li style={{ marginBottom: '16px' }}>✓ Elastyczne godziny wizyt i indywidualne podejście</li>
             </ul>
-            
-            <div className="home__hero-btns">
-              <button onClick={openModal} className="home__btn home__btn--dark" style={{ border: 'none', cursor: 'pointer' }}>Zamów usługę</button>
-            </div>
+
           </div>
 
           <div className={`home__hero-img ${in_ ? 'home__hero-img--in' : ''}`}>
@@ -84,18 +72,6 @@ function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ─── TRUST ─── */}
-      <section className="home__trust">
-        <div className="home__trust-grid">
-          {trust.map((t, i) => (
-            <div key={i} className="home__trust-card">
-              <span className="home__trust-val">{t.value}</span>
-              <span className="home__trust-label">{t.label}</span>
-            </div>
-          ))}
         </div>
       </section>
 

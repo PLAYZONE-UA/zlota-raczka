@@ -124,7 +124,7 @@ function OrderModal() {
     try {
       // Перевіряємо, чи дата не зайнята
       if (occupiedDates.includes(formData.date)) {
-        setError('Цей день заповнений. Виберіть іншу дату.')
+        setError('Ten dzień jest już pełny. Wybierz inną datę.')
         return
       }
       
@@ -225,7 +225,7 @@ function OrderModal() {
                   />
                   {occupiedDates.includes(formData.date) && (
                     <p style={{ fontSize: '12px', color: '#d32f2f', marginTop: '4px' }}>
-                      Цей день заповнений. Виберіть іншу дату.
+                      Ten dzień jest już pełny. Wybierz inną datę.
                     </p>
                   )}
                 </div>
@@ -270,7 +270,10 @@ function OrderModal() {
                 required
               />
 
-              <label htmlFor="photos">Zdjęcia (do 5 sztuk)</label>
+              <label htmlFor="photos">
+                Zdjęcia (do 5 sztuk)
+                <span className="label-hint"> Zdjęcia pomogą nam zobaczyć problem i szybciej wykonać usługę</span>
+              </label>
               <input 
                 type="file" 
                 id="photos" 
