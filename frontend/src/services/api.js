@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_BASE_URL = 'https://zlota-raczka-backend.onrender.com/api'
+const API_BASE_URL = 'https://api.xn--zota-raczka-6zf.warszawa.pl/api'
 
 const api = axios.create({
   baseURL: API_BASE_URL,
