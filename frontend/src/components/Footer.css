@@ -1,0 +1,34 @@
+.footer {
+  background: #111827;
+  color: #fff;
+  padding: 2.5rem 1.5rem;
+}
+
+.footer__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer__brand {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.footer__btn {
+  display: inline-block;
+  background: #374151;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.footer__btn:hover {
+  background: #4b5563;
+  color: #fff;
+}

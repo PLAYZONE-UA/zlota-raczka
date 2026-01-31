@@ -1,0 +1,306 @@
+/* Модальне вікно */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 420px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: #111827;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #999;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.close:hover {
+  color: #333;
+}
+
+.order-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.order-form input,
+.order-form textarea,
+.order-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+/* Стиль для двоколонкової форми */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.form-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-col label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-col input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.form-col input:focus {
+  outline: none;
+  border-color: #111827;
+  background-color: #f9f9f9;
+}
+
+.order-form input:focus,
+.order-form textarea:focus,
+.order-form select:focus {
+  outline: none;
+  border-color: #111827;
+  background-color: #f9f9f9;
+}
+
+/* Стиль для обгортки з префіксом телефону */
+.phone-input-wrapper {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  height: 40px;
+}
+
+.phone-input-wrapper:focus-within {
+  border-color: #111827;
+  background-color: #f9f9f9;
+}
+
+.phone-prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+  user-select: none;
+  border-right: 1px solid #ddd;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.phone-input-wrapper input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  outline: none;
+  height: 100%;
+}
+
+.phone-input-wrapper input:focus {
+  background-color: #fff;
+}
+
+.order-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #111827;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.order-form button:hover {
+  background-color: #374151;
+}
+
+.order-form button:active {
+  transform: scale(0.98);
+}
+
+.photos-preview {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.photos-count {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #666;
+  font-weight: 600;
+}
+
+.photos-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.photo-item {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: #555;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  border-left: 4px solid #c33;
+  font-size: 14px;
+}
+
+.verification-info {
+  background: #eef;
+  color: #336;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  border-left: 4px solid #336;
+  font-size: 14px;
+}
+
+.success-message {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.success-message h2 {
+  color: #28a745;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.success-message p {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.order-form-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #111827;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.order-form-btn:hover {
+  background-color: #374151;
+}
+
+.order-form button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .modal-content h2 {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,178 @@
+.sms-verification {
+  margin: 20px 0;
+}
+
+.verification-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 24px;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.verification-info {
+  font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.verification-info strong {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Code Input */
+.code-input-wrapper {
+  margin: 20px 0;
+}
+
+.code-input {
+  width: 100%;
+  padding: 16px;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.code-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 8px;
+}
+
+.code-input:focus {
+  outline: none;
+  border-color: white;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+/* Actions */
+.verification-actions {
+  margin: 16px 0;
+}
+
+.verification-actions .btn {
+  width: 100%;
+  background: white;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.verification-actions .btn:hover:not(:disabled) {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.verification-actions .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.verification-footer {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.timer-text {
+  font-size: 14px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.timer-text strong {
+  font-weight: 700;
+  color: white;
+}
+
+.timer-expired {
+  font-size: 14px;
+  margin: 0;
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.resend-btn {
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.resend-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: white;
+}
+
+/* Verified State */
+.sms-verification.verified {
+  margin: 16px 0;
+}
+
+.verification-success {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  border-radius: 8px;
+  color: white;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-icon {
+  font-size: 24px;
+}
+
+.success-text {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .verification-card {
+    padding: 20px;
+  }
+
+  .code-input {
+    font-size: 24px;
+    letter-spacing: 6px;
+    padding: 14px;
+  }
+
+  .code-input::placeholder {
+    letter-spacing: 6px;
+  }
+
+  .verification-info {
+    font-size: 13px;
+  }
+
+  .success-text {
+    font-size: 14px;
+  }
+}

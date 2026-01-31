@@ -1,0 +1,168 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.order-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+.service-section {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  max-width: 500px;
+  text-align: center;
+}
+
+.service-section h1 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 32px;
+}
+
+.service-section p {
+  margin-bottom: 25px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.service-section .features {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.service-section button {
+  padding: 12px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-order {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-order:hover {
+  background-color: #0056b3;
+}
+
+.btn-quote {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-quote:hover {
+  background-color: #1e7e34;
+}
+
+/* Модальне вікно */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.order-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.order-form input,
+.order-form textarea,
+.order-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.order-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.order-form button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+  }
+  
+  .service-section {
+    padding: 30px 20px;
+    max-width: 100%;
+  }
+}
+    padding: 24px;
+  }
+
+  .info-icon {
+    font-size: 40px;
+  }
+
+  .info-card h3 {
+    font-size: 18px;
+  }
+}
