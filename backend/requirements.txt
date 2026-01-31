@@ -4,8 +4,10 @@ pydantic-settings==2.0.3
 sqlalchemy>=2.0.36
 aiosqlite==0.19.0
 aiofiles
+httpx
 python-multipart==0.0.6
 twilio==8.10.0
 python-telegram-bot==20.0
 python-dotenv==1.0.0
 Pillow
+click
