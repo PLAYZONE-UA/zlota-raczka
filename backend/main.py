@@ -2,15 +2,35 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import os
+import asyncio
+from contextlib import asynccontextmanager
 
 from app.core.config import settings
+from app.core.database import Base, engine
 from app.api.routes import sms, orders, dates, availability
 
-# Create app
+
+# Initialize database on startup
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    print("🚀 Initializing database...")
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    print("✅ Database tables created/verified")
+    
+    yield
+    
+    # Shutdown
+    print("Shutting down...")
+
+
+# Create app with lifespan
 app = FastAPI(
     title="Handyman Booking API",
     description="API для сервісу замовлення послуг дизайнера",
     version="1.0.0",
+    lifespan=lifespan,
 )
 
 # Add CORS middleware
