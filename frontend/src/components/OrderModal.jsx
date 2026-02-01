@@ -84,8 +84,8 @@ function OrderModal() {
       console.log('✅ SMS код успішно відправлений!')
       setStage('verification')
     } catch (err) {
-      console.error('❌ Помилка при відправці SMS:', err)
-      setError('Не удалось отправить SMS. Ошибка: ' + err.message)
+      console.error('❌ Pomyłka w wysyłaniu SMS:', err)
+      setError('Nie udało się wysłać SMS. Błąd: ' + err.message)
     } finally {
       setLoading(false)
     }
