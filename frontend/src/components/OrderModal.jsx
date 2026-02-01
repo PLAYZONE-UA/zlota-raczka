@@ -29,7 +29,7 @@ function OrderModal() {
   
   const fetchOccupiedDates = async () => {
     try {
-      const apiBase = process.env.REACT_APP_API_URL || '/api'
+      const apiBase = import.meta.env.VITE_API_URL || '/api'
       const response = await fetch(`${apiBase}/availability/check-dates`)
       if (response.ok) {
         const data = await response.json()
@@ -65,7 +65,7 @@ function OrderModal() {
 
     try {
       const phoneNumber = '+48' + formData.phone
-      const apiBase = process.env.REACT_APP_API_URL || '/api'
+      const apiBase = import.meta.env.VITE_API_URL || '/api'
       console.log('📍 URL:', `${apiBase}/sms/send-code`)
       console.log('📍 Body:', JSON.stringify({ phone: phoneNumber }))
       
@@ -99,7 +99,7 @@ function OrderModal() {
     setError('')
 
     try {
-      const apiBase = process.env.REACT_APP_API_URL || '/api'
+      const apiBase = import.meta.env.VITE_API_URL || '/api'
       const response = await fetch(`${apiBase}/sms/verify-code`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -145,7 +145,7 @@ function OrderModal() {
         formDataObj.append('photos', photo)
       })
 
-      const apiBase = process.env.REACT_APP_API_URL || '/api'
+      const apiBase = import.meta.env.VITE_API_URL || '/api'
       const response = await fetch(`${apiBase}/orders/create`, {
         method: 'POST',
         body: formDataObj
