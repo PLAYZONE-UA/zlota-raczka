@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 router = APIRouter()
 
 
-@router.get("/dates/available", response_model=list[AvailableDateResponse])
+@router.get("/available", response_model=list[AvailableDateResponse])
 async def get_available_dates(db: AsyncSession = Depends(get_db)):
     """Get all available dates from today onwards"""
     try:
@@ -27,7 +27,7 @@ async def get_available_dates(db: AsyncSession = Depends(get_db)):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/dates/all", response_model=list[AvailableDateResponse])
+@router.get("/all", response_model=list[AvailableDateResponse])
 async def get_all_dates(db: AsyncSession = Depends(get_db)):
     """Get all dates (admin view)"""
     try:
@@ -39,7 +39,7 @@ async def get_all_dates(db: AsyncSession = Depends(get_db)):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/dates", response_model=AvailableDateResponse)
+@router.post("", response_model=AvailableDateResponse)
 async def create_date(
     date_data: AvailableDateCreate,
     db: AsyncSession = Depends(get_db)
@@ -73,7 +73,7 @@ async def create_date(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.patch("/dates/{date_id}", response_model=AvailableDateResponse)
+@router.patch("/{date_id}", response_model=AvailableDateResponse)
 async def update_date(
     date_id: int,
     date_data: AvailableDateCreate,
@@ -101,7 +101,7 @@ async def update_date(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.delete("/dates/{date_id}", response_model=MessageResponse)
+@router.delete("/{date_id}", response_model=MessageResponse)
 async def delete_date(date_id: int, db: AsyncSession = Depends(get_db)):
     """Delete a date"""
     try:
@@ -123,7 +123,7 @@ async def delete_date(date_id: int, db: AsyncSession = Depends(get_db)):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/dates/bulk", response_model=MessageResponse)
+@router.post("/bulk", response_model=MessageResponse)
 async def bulk_create_dates(
     start_date: str,
     end_date: str,

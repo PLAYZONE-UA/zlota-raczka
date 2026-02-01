@@ -200,37 +200,3 @@ async def delete_order(order_id: int, db: AsyncSession = Depends(get_db)):
     except Exception as e:
         await db.rollback()
         raise HTTPException(status_code=500, detail=str(e))
-
-
-@router.get("/availability/check-dates")
-async def get_occupied_dates(db: AsyncSession = Depends(get_db)):
-    """Get list of dates with orders (occupied dates)"""
-    try:
-        # Get count of orders per date
-        stmt = select(
-            Order.selected_date,
-            func.count(Order.id).label('count')
-        ).where(
-            Order.status != 'cancelled'
-        ).group_by(
-            Order.selected_date
-        )
-        
-        result = await db.execute(stmt)
-        dates_data = result.all()
-        
-        # Get settings (defaults to 2 orders per day)
-        max_orders_per_day = 2
-        
-        occupied_dates = []
-        for date_str, count in dates_data:
-            if count >= max_orders_per_day:
-                occupied_dates.append(date_str)
-        
-        return {
-            "occupied_dates": occupied_dates,
-            "max_orders_per_day": max_orders_per_day
-        }
-    except Exception as e:
-        print(f"Error getting occupied dates: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
