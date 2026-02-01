@@ -46,6 +46,10 @@ function Home() {
               <li style={{ marginBottom: '16px' }}>✓ Elastyczne godziny wizyt i indywidualne podejście</li>
             </ul>
 
+            <p style={{ fontSize: '18px', fontWeight: '600', color: '#2c5aa0', marginTop: '16px' }}>
+              💰 Cena: Od 80 zł/godz
+            </p>
+
           </div>
 
           <div className={`home__hero-img ${in_ ? 'home__hero-img--in' : ''}`}>
