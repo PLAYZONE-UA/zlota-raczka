@@ -13,7 +13,7 @@ from typing import List
 router = APIRouter()
 
 
-@router.post("/orders", response_model=OrderResponse)
+@router.post("", response_model=OrderResponse)
 async def create_order(
     phone: str = Form(...),
     address: str = Form(...),
@@ -93,7 +93,7 @@ async def create_order(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/orders", response_model=List[OrderResponse])
+@router.get("", response_model=List[OrderResponse])
 async def get_orders(
     status: str = None,
     db: AsyncSession = Depends(get_db)
@@ -113,7 +113,7 @@ async def get_orders(
 
 
 
-@router.get("/orders/{order_id}", response_model=OrderResponse)
+@router.get("/{order_id}", response_model=OrderResponse)
 async def get_order(order_id: int, db: AsyncSession = Depends(get_db)):
     """Get a specific order"""
     try:
@@ -131,7 +131,7 @@ async def get_order(order_id: int, db: AsyncSession = Depends(get_db)):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.patch("/orders/{order_id}/status", response_model=OrderResponse)
+@router.patch("/{order_id}/status", response_model=OrderResponse)
 async def update_order_status(
     order_id: int,
     update: OrderUpdate,
@@ -175,7 +175,7 @@ async def update_order_status(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.delete("/orders/{order_id}", response_model=MessageResponse)
+@router.delete("/{order_id}", response_model=MessageResponse)
 async def delete_order(order_id: int, db: AsyncSession = Depends(get_db)):
     """Delete an order"""
     try:
