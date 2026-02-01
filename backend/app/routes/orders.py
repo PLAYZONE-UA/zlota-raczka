@@ -16,7 +16,7 @@ from app.services.telegram_service import telegram_service
 router = APIRouter()
 
 
-@router.post("/orders", response_model=OrderResponse, status_code=201)
+@router.post("", response_model=OrderResponse, status_code=201)
 async def create_order(
     phone: str = Form(...),
     address: str = Form(...),
@@ -107,7 +107,7 @@ async def create_order(
     return order
 
 
-@router.get("/orders", response_model=List[OrderResponse])
+@router.get("", response_model=List[OrderResponse])
 async def get_all_orders(
     status: Optional[str] = None,
     db: AsyncSession = Depends(get_db)
@@ -133,7 +133,7 @@ async def get_all_orders(
         raise HTTPException(status_code=500, detail="Error fetching orders")
 
 
-@router.get("/orders/{order_id}", response_model=OrderResponse)
+@router.get("/{order_id}", response_model=OrderResponse)
 async def get_order(
     order_id: int,
     db: AsyncSession = Depends(get_db)
@@ -151,7 +151,7 @@ async def get_order(
     return order
 
 
-@router.patch("/orders/{order_id}/status", response_model=MessageResponse)
+@router.patch("/{order_id}/status", response_model=MessageResponse)
 async def update_order_status(
     order_id: int,
     order_update: OrderUpdate,
@@ -193,7 +193,7 @@ async def update_order_status(
     )
 
 
-@router.delete("/orders/{order_id}", response_model=MessageResponse)
+@router.delete("/{order_id}", response_model=MessageResponse)
 async def delete_order(
     order_id: int,
     db: AsyncSession = Depends(get_db)

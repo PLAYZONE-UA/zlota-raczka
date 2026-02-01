@@ -24,9 +24,9 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(sms.router, prefix="/api", tags=["SMS"])
-app.include_router(orders.router, prefix="/api", tags=["Orders"])
-app.include_router(dates.router, prefix="/api", tags=["Dates"])
+app.include_router(sms.router, prefix="/api/sms", tags=["SMS"])
+app.include_router(orders.router, prefix="/api/orders", tags=["Orders"])
+app.include_router(dates.router, prefix="/api/dates", tags=["Dates"])
 
 # Create uploads directory if it doesn't exist
 os.makedirs("uploads/photos", exist_ok=True)

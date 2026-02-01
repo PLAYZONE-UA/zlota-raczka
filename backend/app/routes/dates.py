@@ -11,7 +11,7 @@ from app.models.models import AvailableDate
 router = APIRouter()
 
 
-@router.get("/dates/available", response_model=List[AvailableDateResponse])
+@router.get("/available", response_model=List[AvailableDateResponse])
 async def get_available_dates(
     db: AsyncSession = Depends(get_db)
 ):
@@ -49,7 +49,7 @@ async def get_available_dates(
         raise HTTPException(status_code=500, detail="Error fetching dates")
 
 
-@router.get("/dates/all", response_model=List[AvailableDateResponse])
+@router.get("/all", response_model=List[AvailableDateResponse])
 async def get_all_dates(
     db: AsyncSession = Depends(get_db)
 ):
@@ -78,7 +78,7 @@ async def get_all_dates(
         raise HTTPException(status_code=500, detail="Error fetching dates")
 
 
-@router.post("/dates", response_model=AvailableDateResponse, status_code=201)
+@router.post("", response_model=AvailableDateResponse, status_code=201)
 async def create_available_date(
     date_data: AvailableDateCreate,
     db: AsyncSession = Depends(get_db)
@@ -138,7 +138,7 @@ async def create_available_date(
         raise HTTPException(status_code=500, detail="Error creating date")
 
 
-@router.patch("/dates/{date_id}", response_model=AvailableDateResponse)
+@router.patch("/{date_id}", response_model=AvailableDateResponse)
 async def update_available_date(
     date_id: int,
     is_available: bool,
@@ -175,7 +175,7 @@ async def update_available_date(
         raise HTTPException(status_code=500, detail="Error updating date")
 
 
-@router.delete("/dates/{date_id}", response_model=MessageResponse)
+@router.delete("/{date_id}", response_model=MessageResponse)
 async def delete_available_date(
     date_id: int,
     db: AsyncSession = Depends(get_db)
@@ -206,7 +206,7 @@ async def delete_available_date(
         raise HTTPException(status_code=500, detail="Error deleting date")
 
 
-@router.post("/dates/bulk", response_model=MessageResponse)
+@router.post("/bulk", response_model=MessageResponse)
 async def create_bulk_dates(
     start_date: str,
     end_date: str,
