@@ -29,7 +29,8 @@ function OrderModal() {
   
   const fetchOccupiedDates = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/availability/check-dates')
+      const apiBase = process.env.REACT_APP_API_URL || '/api'
+      const response = await fetch(`${apiBase}/availability/check-dates`)
       if (response.ok) {
         const data = await response.json()
         setOccupiedDates(data.occupied_dates || [])
@@ -64,10 +65,11 @@ function OrderModal() {
 
     try {
       const phoneNumber = '+48' + formData.phone
-      console.log('📍 URL:', 'http://127.0.0.1:8000/api/sms/send-code')
+      const apiBase = process.env.REACT_APP_API_URL || '/api'
+      console.log('📍 URL:', `${apiBase}/sms/send-code`)
       console.log('📍 Body:', JSON.stringify({ phone: phoneNumber }))
       
-      const response = await fetch('http://127.0.0.1:8000/api/sms/send-code', {
+      const response = await fetch(`${apiBase}/sms/send-code`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone: phoneNumber })
@@ -97,7 +99,8 @@ function OrderModal() {
     setError('')
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/sms/verify-code', {
+      const apiBase = process.env.REACT_APP_API_URL || '/api'
+      const response = await fetch(`${apiBase}/sms/verify-code`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -142,7 +145,8 @@ function OrderModal() {
         formDataObj.append('photos', photo)
       })
 
-      const response = await fetch('http://127.0.0.1:8000/api/orders/create', {
+      const apiBase = process.env.REACT_APP_API_URL || '/api'
+      const response = await fetch(`${apiBase}/orders/create`, {
         method: 'POST',
         body: formDataObj
       })
