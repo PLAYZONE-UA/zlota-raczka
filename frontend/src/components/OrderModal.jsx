@@ -138,17 +138,16 @@ function OrderModal() {
       }
       
       const formDataObj = new FormData()
-      formDataObj.append('name', formData.name)
       formDataObj.append('phone', '+48' + formData.phone)
       formDataObj.append('address', formData.address)
-      // Об'єднуємо дату й час в один формат
+      // Об'єднуємо дату й час та сервіс в опис
       const dateTime = formData.date && formData.time ? `${formData.date}T${formData.time}` : formData.date
-      formDataObj.append('date', dateTime)
-      formDataObj.append('service', formData.service)
-      formDataObj.append('notes', formData.notes)
+      const description = `Услуга: ${formData.service}\nДодатково: ${formData.notes || ''}`
+      formDataObj.append('description', description)
+      formDataObj.append('selected_date', dateTime)
       
       formData.photos.forEach((photo) => {
-        formDataObj.append('photos', photo)
+        formDataObj.append('files', photo)
       })
 
       const apiBase = getApiUrl()
