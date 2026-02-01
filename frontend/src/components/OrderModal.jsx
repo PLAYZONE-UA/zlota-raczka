@@ -152,7 +152,7 @@ function OrderModal() {
       })
 
       const apiBase = getApiUrl()
-      const response = await fetch(`${apiBase}/orders/create`, {
+      const response = await fetch(`${apiBase}/orders`, {
         method: 'POST',
         body: formDataObj
       })
