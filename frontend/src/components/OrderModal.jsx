@@ -30,13 +30,18 @@ function OrderModal() {
   const fetchOccupiedDates = async () => {
     try {
       const apiBase = import.meta.env.VITE_API_URL || '/api'
-      const response = await fetch(`${apiBase}/availability/check-dates`)
+      console.log('🔗 API Base URL:', apiBase)
+      const url = `${apiBase}/availability/check-dates`
+      console.log('📍 Full URL:', url)
+      const response = await fetch(url)
+      console.log('✅ Response status:', response.status)
       if (response.ok) {
         const data = await response.json()
+        console.log('✅ Occupied dates:', data)
         setOccupiedDates(data.occupied_dates || [])
       }
     } catch (err) {
-      console.error('Помилка при завантаженні зайнятих дат:', err)
+      console.error('❌ Помилка при завантаженні зайнятих дат:', err)
     }
   }
 
