@@ -10,12 +10,20 @@ function DatePicker({ selectedDate, onChange }) {
 
   useEffect(() => {
     fetchAvailableDates()
+    
+    // Refresh dates every 10 seconds
+    const interval = setInterval(() => {
+      fetchAvailableDates()
+    }, 10000)
+    
+    return () => clearInterval(interval)
   }, [])
 
   const fetchAvailableDates = async () => {
     setIsLoading(true)
     try {
       const response = await datesApi.getAvailable()
+      console.log('Fetched available dates:', response.data)
       setAvailableDates(response.data.map(d => d.date))
     } catch (error) {
       console.error('Error fetching dates:', error)
@@ -36,10 +44,8 @@ function DatePicker({ selectedDate, onChange }) {
       const date = new Date(today)
       date.setDate(today.getDate() + i)
       
-      // Skip weekends (0 = Sunday, 6 = Saturday)
-      if (date.getDay() !== 0 && date.getDay() !== 6) {
-        dates.push(formatDate(date))
-      }
+      // Include all dates (weekdays and weekends)
+      dates.push(formatDate(date))
       
       if (dates.length >= 14) break
     }
@@ -79,7 +85,9 @@ function DatePicker({ selectedDate, onChange }) {
   const isDateAvailable = (date) => {
     if (!date) return false
     const dateStr = formatDate(date)
-    return availableDates.includes(dateStr)
+    const isAvailable = availableDates.includes(dateStr)
+    // console.log(`Checking date ${dateStr}: ${isAvailable}`, availableDates)
+    return isAvailable
   }
 
   const isDateSelected = (date) => {
