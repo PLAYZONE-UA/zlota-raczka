@@ -50,7 +50,7 @@ function Home() {
 
           <div className={`home__hero-img ${in_ ? 'home__hero-img--in' : ''}`}>
             <img
-              src="/images/на головну.jpg"
+              src="/images/hero-image.jpg"
               alt="Fachowiec"
               onError={e => { e.target.style.display = 'none' }}
             />
