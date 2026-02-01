@@ -15,6 +15,9 @@ COPY . .
 # Build the application
 RUN npm run build
 
+# Copy serve config to dist
+COPY public/serve.json dist/serve.json
+
 # Production stage
 FROM node:18-alpine
 
@@ -30,5 +33,5 @@ COPY --from=builder /app/public ./public
 # Expose port
 EXPOSE 5180
 
-# Start server with dynamic PORT support
-CMD ["sh", "-c", "serve -s dist -l ${PORT:-5180}"]
+# Start server with SPA routing and dynamic PORT
+CMD ["sh", "-c", "serve -c serve.json -s dist -l ${PORT:-5180}"]
