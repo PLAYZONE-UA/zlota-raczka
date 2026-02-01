@@ -150,6 +150,12 @@ function OrderModal() {
         formDataObj.append('files', photo)
       })
 
+      // Логування що відправляємо
+      console.log('📦 Sending formData:')
+      for (let [key, value] of formDataObj.entries()) {
+        console.log(`  ${key}:`, value)
+      }
+
       const apiBase = getApiUrl()
       const response = await fetch(`${apiBase}/orders`, {
         method: 'POST',
