@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 import { OrderModalContext } from '../contexts/OrderModalContext'
+import { getApiUrl } from '../utils/api-utils'
 import './OrderModal.css'
 
 function OrderModal() {
@@ -29,7 +30,7 @@ function OrderModal() {
   
   const fetchOccupiedDates = async () => {
     try {
-      const apiBase = import.meta.env.VITE_API_URL || '/api'
+      const apiBase = getApiUrl()
       console.log('🔗 API Base URL:', apiBase)
       const url = `${apiBase}/availability/check-dates`
       console.log('📍 Full URL:', url)
@@ -70,7 +71,7 @@ function OrderModal() {
 
     try {
       const phoneNumber = '+48' + formData.phone
-      const apiBase = import.meta.env.VITE_API_URL || '/api'
+      const apiBase = getApiUrl()
       console.log('📍 URL:', `${apiBase}/sms/send-code`)
       console.log('📍 Body:', JSON.stringify({ phone: phoneNumber }))
       
@@ -104,7 +105,7 @@ function OrderModal() {
     setError('')
 
     try {
-      const apiBase = import.meta.env.VITE_API_URL || '/api'
+      const apiBase = getApiUrl()
       const response = await fetch(`${apiBase}/sms/verify-code`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -150,7 +151,7 @@ function OrderModal() {
         formDataObj.append('photos', photo)
       })
 
-      const apiBase = import.meta.env.VITE_API_URL || '/api'
+      const apiBase = getApiUrl()
       const response = await fetch(`${apiBase}/orders/create`, {
         method: 'POST',
         body: formDataObj
