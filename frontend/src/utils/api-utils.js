@@ -5,7 +5,9 @@
 export const getApiUrl = () => {
   // If VITE_API_URL is set (during build with env vars)
   if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL
+    const url = import.meta.env.VITE_API_URL
+    // Ensure it doesn't end with /api (to avoid duplication)
+    return url.endsWith('/api') ? url : `${url}/api`
   }
   
   // Runtime detection: use window.location for production
