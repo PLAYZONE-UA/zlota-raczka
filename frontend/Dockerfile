@@ -30,5 +30,5 @@ COPY --from=builder /app/public ./public
 # Expose port
 EXPOSE 5180
 
-# Start server
-CMD ["serve", "-s", "dist", "-l", "5180"]
+# Start server with dynamic PORT support
+CMD ["sh", "-c", "serve -s dist -l ${PORT:-5180}"]
