@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 import os
 
 from app.core.config import settings
-from app.api.routes import sms, orders, dates
+from app.api.routes import sms, orders, dates, availability
 
 # Create app
 app = FastAPI(
@@ -24,9 +24,10 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(sms.router, prefix="/api/sms", tags=["SMS"])
+app.include_router(sms.router, prefix="/api", tags=["SMS"])
 app.include_router(orders.router, prefix="/api/orders", tags=["Orders"])
 app.include_router(dates.router, prefix="/api/dates", tags=["Dates"])
+app.include_router(availability.router, prefix="/api/availability", tags=["Availability"])
 
 # Create uploads directory if it doesn't exist
 os.makedirs("uploads/photos", exist_ok=True)
