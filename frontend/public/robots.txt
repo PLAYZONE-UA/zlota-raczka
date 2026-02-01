@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/login
+
+Sitemap: https://xn--zota-rczka-8gb04e.pl/sitemap.xml
