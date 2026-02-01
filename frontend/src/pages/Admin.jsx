@@ -1,31 +1,43 @@
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
-import { ordersApi } from '../services/api'
+import { ordersApi, datesApi } from '../services/api'
 import './Admin.css'
+import { Trash2 } from 'lucide-react'
 
 function Admin() {
   const [orders, setOrders] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [filterStatus, setFilterStatus] = useState('all')
   const [selectedOrder, setSelectedOrder] = useState(null)
+  const [activeTab, setActiveTab] = useState('orders')
+  const [dates, setDates] = useState([])
+  const [newDateInput, setNewDateInput] = useState('')
 
   useEffect(() => {
     fetchOrders()
+    fetchDates()
   }, [])
 
   const fetchOrders = async () => {
     setIsLoading(true)
     try {
-      console.log('Fetching orders from:', 'http://localhost:8000/api/orders')
       const response = await ordersApi.getAll()
-      console.log('Orders response:', response.data)
       setOrders(response.data)
     } catch (error) {
       console.error('Error fetching orders:', error)
-      console.error('Error details:', error.response?.data, error.message)
-      toast.error('Nie udało się załadować zamówienia: ' + error.message)
+      toast.error('Nie udało się załadować zamówienia')
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  const fetchDates = async () => {
+    try {
+      const response = await datesApi.getAll()
+      setDates(Array.isArray(response.data) ? response.data : [])
+    } catch (error) {
+      console.error('Error fetching dates:', error)
+      toast.error('Nie udało się załadować daty')
     }
   }
 
@@ -33,14 +45,59 @@ function Admin() {
     try {
       await ordersApi.updateStatus(orderId, newStatus)
       toast.success('Status zamówienia zaktualizowany')
-      
-      // Update local state
       setOrders(orders.map(order => 
         order.id === orderId ? { ...order, status: newStatus } : order
       ))
     } catch (error) {
-      console.error('Error updating status:', error)
+      console.error('Error updating order status:', error)
       toast.error('Nie udało się zaktualizować status')
+    }
+  }
+
+  const handleDeleteOrder = async (orderId) => {
+    if (!window.confirm('Czy na pewno chcesz usunąć to zamówienie?')) {
+      return
+    }
+
+    try {
+      await ordersApi.delete(orderId)
+      toast.success('Zamówienie zostało usunięte')
+      setOrders(orders.filter(order => order.id !== orderId))
+    } catch (error) {
+      console.error('Error deleting order:', error)
+      toast.error('Nie udało się usunąć zamówienia')
+    }
+  }
+
+  const handleAddDate = async () => {
+    if (!newDateInput.trim()) {
+      toast.error('Proszę podać datę')
+      return
+    }
+
+    try {
+      const response = await datesApi.create({ date: newDateInput })
+      toast.success('Data została dodana')
+      setNewDateInput('')
+      setDates([...dates, response.data])
+    } catch (error) {
+      console.error('Error adding date:', error)
+      toast.error('Nie udało się dodać datę')
+    }
+  }
+
+  const handleDeleteDate = async (dateId) => {
+    if (!window.confirm('Czy na pewno chcesz usunąć tę datę?')) {
+      return
+    }
+
+    try {
+      await datesApi.delete(dateId)
+      toast.success('Data została usunięta')
+      setDates(dates.filter(d => d.id !== dateId))
+    } catch (error) {
+      console.error('Error deleting date:', error)
+      toast.error('Nie udało się usunąć datę')
     }
   }
 
@@ -83,107 +140,194 @@ function Admin() {
     <div className="admin-page">
       <div className="admin-header">
         <h1>Panel administracyjny</h1>
-        <p>Zarządzanie zamówieniami</p>
+        <p>Zarządzanie zamówieniami i datami</p>
+      </div>
+
+      {/* Tabs */}
+      <div className="admin-tabs">
+        <button
+          className={`tab-btn ${activeTab === 'orders' ? 'active' : ''}`}
+          onClick={() => setActiveTab('orders')}
+        >
+          📋 Zamówienia ({orders.length})
+        </button>
+        <button
+          className={`tab-btn ${activeTab === 'dates' ? 'active' : ''}`}
+          onClick={() => setActiveTab('dates')}
+        >
+          📅 Dostępne daty ({dates.length})
+        </button>
       </div>
 
       <div className="admin-content">
-        {/* Filters */}
-        <div className="admin-filters">
-          <button
-            className={`filter-btn ${filterStatus === 'all' ? 'active' : ''}`}
-            onClick={() => setFilterStatus('all')}
-          >
-            Wszystkie ({orders.length})
-          </button>
-          <button
-            className={`filter-btn ${filterStatus === 'new' ? 'active' : ''}`}
-            onClick={() => setFilterStatus('new')}
-          >
-            Nowe ({orders.filter(o => o.status === 'new').length})
-          </button>
-          <button
-            className={`filter-btn ${filterStatus === 'in_progress' ? 'active' : ''}`}
-            onClick={() => setFilterStatus('in_progress')}
-          >
-            W trakcie ({orders.filter(o => o.status === 'in_progress').length})
-          </button>
-          <button
-            className={`filter-btn ${filterStatus === 'completed' ? 'active' : ''}`}
-            onClick={() => setFilterStatus('completed')}
-          >
-            Zakończone ({orders.filter(o => o.status === 'completed').length})
-          </button>
-          <button
-            className={`filter-btn ${filterStatus === 'cancelled' ? 'active' : ''}`}
-            onClick={() => setFilterStatus('cancelled')}
-          >
-            Anulowane ({orders.filter(o => o.status === 'cancelled').length})
-          </button>
-        </div>
+        {/* ORDERS TAB */}
+        {activeTab === 'orders' && (
+          <>
+            {/* Filters */}
+            <div className="admin-filters">
+              <button
+                className={`filter-btn ${filterStatus === 'all' ? 'active' : ''}`}
+                onClick={() => setFilterStatus('all')}
+              >
+                Wszystkie ({orders.length})
+              </button>
+              <button
+                className={`filter-btn ${filterStatus === 'new' ? 'active' : ''}`}
+                onClick={() => setFilterStatus('new')}
+              >
+                Nowe ({orders.filter(o => o.status === 'new').length})
+              </button>
+              <button
+                className={`filter-btn ${filterStatus === 'in_progress' ? 'active' : ''}`}
+                onClick={() => setFilterStatus('in_progress')}
+              >
+                W trakcie ({orders.filter(o => o.status === 'in_progress').length})
+              </button>
+              <button
+                className={`filter-btn ${filterStatus === 'completed' ? 'active' : ''}`}
+                onClick={() => setFilterStatus('completed')}
+              >
+                Zakończone ({orders.filter(o => o.status === 'completed').length})
+              </button>
+              <button
+                className={`filter-btn ${filterStatus === 'cancelled' ? 'active' : ''}`}
+                onClick={() => setFilterStatus('cancelled')}
+              >
+                Anulowane ({orders.filter(o => o.status === 'cancelled').length})
+              </button>
+            </div>
 
-        {/* Orders List */}
-        {filteredOrders.length === 0 ? (
-          <div className="no-orders">
-            <p>Brak zamówień</p>
-          </div>
-        ) : (
-          <div className="orders-list">
-            {filteredOrders.map(order => (
-              <div key={order.id} className="order-card">
-                <div className="order-header">
-                  <div className="order-id">Zamówienie #{order.id}</div>
-                  <div 
-                    className="order-status"
-                    style={{ backgroundColor: getStatusColor(order.status) }}
-                  >
-                    {getStatusLabel(order.status)}
-                  </div>
-                </div>
-
-                <div className="order-info">
-                  <div className="info-row">
-                    <strong>💱 Telefon:</strong> {order.phone}
-                  </div>
-                  <div className="info-row">
-                    <strong>📍 Adres:</strong> {order.address}
-                  </div>
-                  <div className="info-row">
-                    <strong>📅 Data:</strong> {order.selected_date}
-                  </div>
-                  <div className="info-row">
-                    <strong>📏 Opis:</strong> {order.description}
-                  </div>
-                  {order.photos && order.photos.length > 0 && (
-                    <div className="info-row">
-                      <strong>💸 Zdjęcia:</strong> {order.photos.length} szt.
-                      <button
-                        className="view-photos-btn"
-                        onClick={() => setSelectedOrder(order)}
+            {/* Orders List */}
+            {filteredOrders.length === 0 ? (
+              <div className="no-orders">
+                <p>Brak zamówień</p>
+              </div>
+            ) : (
+              <div className="orders-list">
+                {filteredOrders.map(order => (
+                  <div key={order.id} className="order-card">
+                    <div className="order-header">
+                      <div className="order-id">Zamówienie #{order.id}</div>
+                      <div 
+                        className="order-status"
+                        style={{ backgroundColor: getStatusColor(order.status) }}
                       >
-                        Przegląd
+                        {getStatusLabel(order.status)}
+                      </div>
+                    </div>
+
+                    <div className="order-info">
+                      <div className="info-row">
+                        <strong>💱 Telefon:</strong> {order.phone}
+                      </div>
+                      <div className="info-row">
+                        <strong>📍 Adres:</strong> {order.address}
+                      </div>
+                      <div className="info-row">
+                        <strong>📅 Data:</strong> {order.selected_date}
+                      </div>
+                      <div className="info-row">
+                        <strong>📏 Opis:</strong> {order.description}
+                      </div>
+                      {order.photos && order.photos.length > 0 && (
+                        <div className="info-row">
+                          <strong>💸 Zdjęcia:</strong> {order.photos.length} szt.
+                          <button
+                            className="view-photos-btn"
+                            onClick={() => setSelectedOrder(order)}
+                          >
+                            Przegląd
+                          </button>
+                        </div>
+                      )}
+                      <div className="info-row">
+                        <strong>🗒 Utworzono:</strong> {new Date(order.created_at).toLocaleString('pl-PL')}
+                      </div>
+                    </div>
+
+                    <div className="order-actions">
+                      <select
+                        value={order.status}
+                        onChange={(e) => handleStatusChange(order.id, e.target.value)}
+                        className="status-select"
+                      >
+                        <option value="new">Nowe</option>
+                        <option value="in_progress">W trakcie</option>
+                        <option value="completed">Zakończone</option>
+                        <option value="cancelled">Anulowane</option>
+                      </select>
+                      <button
+                        className="delete-btn"
+                        onClick={() => handleDeleteOrder(order.id)}
+                        title="Usuń zamówienie"
+                      >
+                        <Trash2 size={18} /> Usuń
                       </button>
                     </div>
-                  )}
-                  <div className="info-row">
-                    <strong>🗒 Utworzono:</strong> {new Date(order.created_at).toLocaleString('pl-PL')}
                   </div>
-                </div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
 
-                <div className="order-actions">
-                  <select
-                    value={order.status}
-                    onChange={(e) => handleStatusChange(order.id, e.target.value)}
-                    className="status-select"
+        {/* DATES TAB */}
+        {activeTab === 'dates' && (
+          <>
+            <div className="dates-container">
+              <div className="add-date-form">
+                <h3>Dodaj nową dostępną datę</h3>
+                <div className="form-group">
+                  <input
+                    type="date"
+                    value={newDateInput}
+                    onChange={(e) => setNewDateInput(e.target.value)}
+                    className="date-input"
+                  />
+                  <button
+                    onClick={handleAddDate}
+                    className="add-date-btn"
                   >
-                    <option value="new">Nowe</option>
-                    <option value="in_progress">W trakcie</option>
-                    <option value="completed">Zakończone</option>
-                    <option value="cancelled">Anulowane</option>
-                  </select>
+                    Dodaj datę
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
+
+              <div className="dates-list">
+                <h3>Dostępne daty</h3>
+                {dates.length === 0 ? (
+                  <p className="no-dates">Brak dostępnych dat</p>
+                ) : (
+                  <div className="dates-grid">
+                    {dates.map(date => (
+                      <div key={date.id} className="date-card">
+                        <div className="date-display">
+                          <span className="date-text">
+                            {new Date(date.date).toLocaleDateString('pl-PL', {
+                              weekday: 'long',
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric'
+                            })}
+                          </span>
+                          {date.is_booked && (
+                            <span className="date-status booked">Zarezerwowana</span>
+                          )}
+                        </div>
+                        <button
+                          onClick={() => handleDeleteDate(date.id)}
+                          className="delete-date-btn"
+                          title="Usuń datę"
+                        >
+                          <Trash2 size={18} /> Usuń
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </>
         )}
       </div>
 
@@ -201,7 +345,6 @@ function Admin() {
             <div className="modal-photos">
               {Array.isArray(selectedOrder.photos) ? (
                 selectedOrder.photos.map((photo, index) => {
-                  // Якщо фото - це рядок (ім'я файлу)
                   const photoUrl = typeof photo === 'string' 
                     ? `http://127.0.0.1:8000/uploads/photos/${photo}`
                     : `http://127.0.0.1:8000/uploads/photos/${photo.filename || photo}`;
@@ -210,18 +353,18 @@ function Admin() {
                     <div key={index} className="modal-photo">
                       <img
                         src={photoUrl}
-                        alt={`Фото ${index + 1}`}
+                        alt={`Zdjęcie ${index + 1}`}
                         onError={(e) => {
                           console.error('Image failed to load:', photoUrl);
-                          e.target.src = '/uploads/placeholder.png'; // Якщо є placeholder
+                          e.target.src = '/uploads/placeholder.png';
                         }}
                       />
-                      <p>Фото {index + 1}</p>
+                      <p>Zdjęcie {index + 1}</p>
                     </div>
                   );
                 })
               ) : (
-                <p>Немає фото</p>
+                <p>Brak zdjęć</p>
               )}
             </div>
           </div>
