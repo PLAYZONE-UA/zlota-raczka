@@ -28,20 +28,12 @@ async def create_order(
         if not validate_phone_number(phone):
             raise HTTPException(status_code=400, detail="Неправильний номер телефону")
         
-        # Check SMS verification
-        stmt = select(SMSVerification).where(
-            and_(SMSVerification.phone == phone, SMSVerification.is_verified == True)
-        )
-        result = await db.execute(stmt)
-        if not result.scalar_one_or_none():
-            raise HTTPException(status_code=400, detail="Номер телефону не верифіковано")
-        
-        # Check max 2 orders per phone number
+        # Перевіримо макс 2 замовлення per phone
         count_stmt = select(func.count()).select_from(Order).where(Order.phone == phone)
         count_result = await db.execute(count_stmt)
         order_count = count_result.scalar()
         if order_count >= 2:
-            raise HTTPException(status_code=400, detail="Już masz maksymalnie 2 zamówienia. Skontaktuj się bezpośrednio, aby uzyskać więcej szczegółów.")
+            raise HTTPException(status_code=400, detail="Già hai 2 ordini. Contatta direttamente per più dettagli.")
         
         # Validate text fields
         if not validate_text_length(address, 5, 255):

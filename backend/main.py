@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.core.database import Base, engine
-from app.api.routes import sms, orders, dates, availability
+from app.api.routes import orders, dates, availability
 
 
 # Initialize database on startup
@@ -44,7 +44,6 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(sms.router, prefix="/api", tags=["SMS"])
 app.include_router(orders.router, prefix="/api/orders", tags=["Orders"])
 app.include_router(dates.router, prefix="/api/dates", tags=["Dates"])
 app.include_router(availability.router, prefix="/api/availability", tags=["Availability"])
