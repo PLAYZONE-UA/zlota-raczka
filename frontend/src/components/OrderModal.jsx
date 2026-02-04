@@ -3,6 +3,8 @@ import { OrderModalContext } from '../contexts/OrderModalContext'
 import { getApiUrl } from '../utils/api-utils'
 import './OrderModal.css'
 
+// Version: 1.0.1 - Removed SMS functionality, direct order submission
+
 function OrderModal() {
   const { isOpen, closeModal } = useContext(OrderModalContext)
   const [loading, setLoading] = useState(false)
