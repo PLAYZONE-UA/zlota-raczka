@@ -153,5 +153,6 @@ class SMSService:
             return False
 
 
-# Singleton instance
-sms_service = SMSService()
+# Singleton instance - DISABLED (SMS removed)
+# sms_service = SMSService()
+sms_service = None
