@@ -16,6 +16,7 @@ function OrderModal() {
     address: '',
     date: '',
     time: '',
+    service: '',
     notes: '',
     photos: []
   })
@@ -53,12 +54,15 @@ function OrderModal() {
       if (!formData.date) {
         throw new Error('Wybierz datę')
       }
+      if (!formData.service) {
+        throw new Error('Wybierz usługę')
+      }
 
       const formDataObj = new FormData()
       formDataObj.append('phone', '+48' + formData.phone)
       formDataObj.append('address', formData.address)
       const dateTime = formData.date && formData.time ? `${formData.date}T${formData.time}` : formData.date
-      const description = `Imię: ${formData.name}\nDodatkowo: ${formData.notes || ''}`
+      const description = `Imię: ${formData.name}\nUsługa: ${formData.service}\nDodatkowo: ${formData.notes || ''}`
       formDataObj.append('description', description)
       formDataObj.append('selected_date', dateTime)
       
@@ -89,6 +93,7 @@ function OrderModal() {
         address: '',
         date: '',
         time: '',
+        service: '',
         notes: '',
         photos: []
       })
@@ -166,7 +171,21 @@ function OrderModal() {
               onChange={handleChange}
               rows="3"
             ></textarea>
-
+            <label>🔧 Jakiej usługi potrzebujesz?</label>
+            <select
+              name="service"
+              value={formData.service}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Wybierz usługę</option>
+              <option value="Montaż mebli">Montaż mebli</option>
+              <option value="Hydraulika">Hydraulika</option>
+              <option value="Elektryka">Elektryka</option>
+              <option value="Naprawy domowe">Naprawy domowe</option>
+              <option value="Sprzątanie domu">Sprzątanie domu</option>
+              <option value="Inne">Inne</option>
+            </select>
             <div className="row">
               <div>
                 <label>📅 Data</label>
