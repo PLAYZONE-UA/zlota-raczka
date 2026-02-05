@@ -44,12 +44,9 @@ function Home() {
               <li style={{ marginBottom: '8px' }}>✓ Dojazd tego samego dnia</li>
               <li style={{ marginBottom: '8px' }}>✓ Własne narzędzia – nie musisz niczego przygotowywać</li>
               <li style={{ marginBottom: '8px' }}>✓ Drobne prace – bez dużych remontów</li>
-              <li style={{ marginBottom: '16px' }}>✓ Elastyczne godziny wizyt i indywidualne podejście</li>
+              <li style={{ marginBottom: '8px' }}>✓ Elastyczne godziny wizyt i indywidualne podejście</li>
+              <li style={{ marginBottom: '16px' }}>✓ Jeśli nie możemy pomóc, nie płacisz za dojazd</li>
             </ul>
-
-            <p style={{ fontSize: '18px', fontWeight: '600', color: '#2c5aa0', marginTop: '16px' }}>
-              💰 Cena: Od 80 zł/godz
-            </p>
 
           </div>
 
