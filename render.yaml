@@ -1,9 +1,31 @@
 services:
   - type: web
+    name: zlota-raczka-backend
+    env: python
+    region: frankfurt
+    plan: free
+    runtime: python-3.11
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn -w 1 -b 0.0.0.0:$PORT backend.main:app
+    envVars:
+      - key: DATABASE_URL
+        scope: service
+      - key: SMTP_PASSWORD
+        scope: service
+      - key: JWT_SECRET
+        scope: service
+    connect: false
+
+  - type: web
     name: zlota-raczka-frontend
     env: node
+    region: frankfurt
+    plan: free
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: ./frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://zlota-raczka-backend.onrender.com
     routes:
       - type: rewrite
         source: /*

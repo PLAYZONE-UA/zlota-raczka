@@ -3,7 +3,7 @@ import { OrderModalContext } from '../contexts/OrderModalContext'
 import { getApiUrl } from '../utils/api-utils'
 import './OrderModal.css'
 
-// Version: 1.0.1 - Removed SMS functionality, direct order submission
+// Version: 1.1.0 - Updated UI with improved form layout
 
 function OrderModal() {
   const { isOpen, closeModal } = useContext(OrderModalContext)
@@ -110,49 +110,71 @@ function OrderModal() {
   return (
     <div className="modal">
       <div className="modal-content">
-        <button className="modal-close" onClick={closeModal}>✕</button>
-        
+        <div className="modal-header">
+          <h2>🔧 Zamów złotą rączkę</h2>
+          <p>Podaj kilka informacji – oddzwonimy</p>
+        </div>
+
         {success ? (
           <div className="modal-success">
             <h2>✅ Zamówienie zostało przyjęte!</h2>
             <p>Wkrótce się z Tobą skontaktujemy.</p>
           </div>
         ) : (
-          <>
-            <h2>Złóż zamówienie</h2>
-            <form onSubmit={handleSubmit}>
-              {error && <div className="modal-error" style={{ padding: '12px', backgroundColor: '#fee', color: '#c00', borderRadius: '4px', marginBottom: '16px' }}>{error}</div>}
+          <form className="order-form" onSubmit={handleSubmit}>
+            {error && <div className="modal-error">{error}</div>}
 
-              <div className="modal-field">
-                <label>Numer telefonu *</label>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <span style={{ marginRight: '8px' }}>+48</span>
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="574621560"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    maxLength="9"
-                    required
-                  />
-                </div>
-              </div>
+            <label>📞 Telefon</label>
+            <div className="phone-input-wrapper">
+              <span className="phone-prefix">+48</span>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Np. 574 621 560"
+                value={formData.phone}
+                onChange={handleChange}
+                maxLength="9"
+                required
+              />
+            </div>
 
-              <div className="modal-field">
-                <label>Adres *</label>
-                <input
-                  type="text"
-                  name="address"
-                  placeholder="np. Piłsudskiego 10, Warszawa"
-                  value={formData.address}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+            <label>📍 Adres</label>
+            <input
+              type="text"
+              name="address"
+              placeholder="Np. Piłsudskiego 10, Warszawa"
+              value={formData.address}
+              onChange={handleChange}
+              required
+            />
 
-              <div className="modal-field">
-                <label>Data wizyty *</label>
+            <label>🔧 Jakiej usługi potrzebujesz?</label>
+            <select
+              name="service"
+              value={formData.service}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Wybierz usługę</option>
+              <option value="Montaż mebli">Montaż mebli</option>
+              <option value="Hydraulika">Hydraulika</option>
+              <option value="Elektryka">Elektryka</option>
+              <option value="Naprawy domowe">Naprawy domowe</option>
+              <option value="Inne">Inne</option>
+            </select>
+
+            <label>📝 Opisz problem</label>
+            <textarea
+              name="notes"
+              placeholder="Np. cieknący kran w kuchni"
+              value={formData.notes}
+              onChange={handleChange}
+              rows="3"
+            ></textarea>
+
+            <div className="row">
+              <div>
+                <label>📅 Data</label>
                 <input
                   type="date"
                   name="date"
@@ -161,9 +183,8 @@ function OrderModal() {
                   required
                 />
               </div>
-
-              <div className="modal-field">
-                <label>Czas (opcjonalnie)</label>
+              <div>
+                <label>⏰ Godzina (opcjonalnie)</label>
                 <input
                   type="time"
                   name="time"
@@ -171,68 +192,30 @@ function OrderModal() {
                   onChange={handleChange}
                 />
               </div>
+            </div>
 
-              <div className="modal-field">
-                <label>Rodzaj usługi *</label>
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Wybierz usługę</option>
-                  <option value="Naprawa">Naprawa</option>
-                  <option value="Montaż">Montaż</option>
-                  <option value="Prace remontowe">Prace remontowe</option>
-                  <option value="Inne">Inne</option>
-                </select>
-              </div>
+            <label>📷 Dodaj zdjęcie (opcjonalnie)</label>
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={handlePhotoChange}
+            />
+            {formData.photos.length > 0 && (
+              <p style={{ fontSize: '12px', color: '#666' }}>
+                Wybrane: {formData.photos.length} zdjęć
+              </p>
+            )}
 
-              <div className="modal-field">
-                <label>Dodatkowe informacje</label>
-                <textarea
-                  name="notes"
-                  placeholder="Opisz co trzeba naprawić lub czego szukasz"
-                  value={formData.notes}
-                  onChange={handleChange}
-                  rows="4"
-                />
-              </div>
+            <button
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? 'Wysyłanie...' : 'Zamów fachowca'}
+            </button>
 
-              <div className="modal-field">
-                <label>Zdjęcia (max 5)</label>
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  onChange={handlePhotoChange}
-                />
-                {formData.photos.length > 0 && (
-                  <p style={{ fontSize: '12px', color: '#666' }}>
-                    Wybrane: {formData.photos.length} zdjęć
-                  </p>
-                )}
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                style={{
-                  width: '100%',
-                  padding: '12px',
-                  backgroundColor: '#2c5aa0',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '4px',
-                  cursor: loading ? 'not-allowed' : 'pointer',
-                  fontSize: '16px',
-                  fontWeight: '600'
-                }}
-              >
-                {loading ? 'Wysyłanie...' : 'Wyślij zamówienie'}
-              </button>
-            </form>
-          </>
+            <span className="info">⏱ Odpowiadamy zwykle w 15 minut</span>
+          </form>
         )}
       </div>
     </div>
