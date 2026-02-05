@@ -54,12 +54,14 @@ body {
   font-size: 22px;
   color: #111827;
   font-weight: 700;
+  text-align: center;
 }
 
 .modal-header p {
   color: #666;
   margin: 6px 0 20px;
   font-size: 14px;
+  text-align: center;
 }
 
 .order-form label {
@@ -221,6 +223,30 @@ button:disabled {
   color: #666;
   margin: 0;
   line-height: 1.6;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #999;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background-color: #f0f0f0;
+  color: #333;
 }
 
 @media (max-width: 600px) {

@@ -10,6 +10,7 @@ const services = [
   { title: 'Elektryka',      desc: 'Gniazdka, lampy, włączniki',            icon: Zap      },
   { title: 'Hydraulika',     desc: 'Kran, syfon, uszczelnienia',            icon: Droplets },
   { title: 'Wiercenie',      desc: 'Ściany, sufity, montaż na ścianie',     icon: Wrench   },
+  { title: 'Sprzątanie domu', desc: 'Generalne czyszczenie wnętrz',         icon: Trash2   },
   { title: 'Porządki',       desc: 'Garaż, piwnica, ogród',                icon: Trash2   },
   { title: 'Prace blacharskie', desc: 'Obróbki, poprawki, drobne naprawy (bez dachów)', icon: Hammer },
 ]

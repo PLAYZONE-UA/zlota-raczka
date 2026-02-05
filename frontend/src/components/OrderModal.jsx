@@ -179,11 +179,14 @@ function OrderModal() {
               required
             >
               <option value="">Wybierz usługę</option>
+              <option value="Naprawy domowe">Naprawy domowe</option>
               <option value="Montaż mebli">Montaż mebli</option>
               <option value="Hydraulika">Hydraulika</option>
               <option value="Elektryka">Elektryka</option>
-              <option value="Naprawy domowe">Naprawy domowe</option>
+              <option value="Wiercenie">Wiercenie</option>
               <option value="Sprzątanie domu">Sprzątanie domu</option>
+              <option value="Porządki">Porządki - garaż, piwnica, ogród</option>
+              <option value="Prace blacharskie">Prace blacharskie</option>
               <option value="Inne">Inne</option>
             </select>
             <div className="row">
