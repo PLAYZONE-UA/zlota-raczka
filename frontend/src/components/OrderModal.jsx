@@ -116,7 +116,7 @@ function OrderModal() {
     <div className="modal">
       <div className="modal-content">
         <div className="modal-header">
-          <h2>🔧 Zamów złotą rączkę</h2>
+          <h2> Zamów złotą rączkę</h2>
           <p>Podaj kilka informacji – oddzwonimy</p>
         </div>
 
@@ -129,7 +129,7 @@ function OrderModal() {
           <form className="order-form" onSubmit={handleSubmit}>
             {error && <div className="modal-error">{error}</div>}
 
-            <label>� Imię</label>
+            <label> Imię</label>
             <input
               type="text"
               name="name"
@@ -139,7 +139,7 @@ function OrderModal() {
               required
             />
 
-            <label>�📞 Telefon</label>
+            <label> Telefon</label>
             <div className="phone-input-wrapper">
               <span className="phone-prefix">+48</span>
               <input
@@ -153,7 +153,7 @@ function OrderModal() {
               />
             </div>
 
-            <label>📍 Adres</label>
+            <label> Adres</label>
             <input
               type="text"
               name="address"
@@ -171,7 +171,7 @@ function OrderModal() {
               onChange={handleChange}
               rows="3"
             ></textarea>
-            <label>🔧 Jakiej usługi potrzebujesz?</label>
+            <label> Jakiej usługi potrzebujesz?</label>
             <select
               name="service"
               value={formData.service}
@@ -188,7 +188,7 @@ function OrderModal() {
             </select>
             <div className="row">
               <div>
-                <label>📅 Data</label>
+                <label> Data</label>
                 <input
                   type="date"
                   name="date"
@@ -198,7 +198,7 @@ function OrderModal() {
                 />
               </div>
               <div>
-                <label>⏰ Godzina (opcjonalnie)</label>
+                <label> Godzina (opcjonalnie)</label>
                 <input
                   type="time"
                   name="time"
@@ -208,7 +208,7 @@ function OrderModal() {
               </div>
             </div>
 
-            <label>📷 Dodaj zdjęcie (opcjonalnie)</label>
+            <label> Dodaj zdjęcie (opcjonalnie)</label>
             <input
               type="file"
               multiple
