@@ -11,11 +11,11 @@ function OrderModal() {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
   const [formData, setFormData] = useState({
+    name: '',
     phone: '',
     address: '',
     date: '',
     time: '',
-    service: '',
     notes: '',
     photos: []
   })
@@ -41,6 +41,9 @@ function OrderModal() {
     setError('')
     
     try {
+      if (!formData.name || formData.name.length < 2) {
+        throw new Error('Podaj swoje imię')
+      }
       if (!formData.phone || formData.phone.length < 9) {
         throw new Error('Podaj prawidłowy numer telefonu')
       }
@@ -50,15 +53,12 @@ function OrderModal() {
       if (!formData.date) {
         throw new Error('Wybierz datę')
       }
-      if (!formData.service) {
-        throw new Error('Wybierz usługę')
-      }
 
       const formDataObj = new FormData()
       formDataObj.append('phone', '+48' + formData.phone)
       formDataObj.append('address', formData.address)
       const dateTime = formData.date && formData.time ? `${formData.date}T${formData.time}` : formData.date
-      const description = `Usługa: ${formData.service}\nDodatkowo: ${formData.notes || ''}`
+      const description = `Imię: ${formData.name}\nDodatkowo: ${formData.notes || ''}`
       formDataObj.append('description', description)
       formDataObj.append('selected_date', dateTime)
       
@@ -84,11 +84,11 @@ function OrderModal() {
 
       setSuccess(true)
       setFormData({
+        name: '',
         phone: '',
         address: '',
         date: '',
         time: '',
-        service: '',
         notes: '',
         photos: []
       })
@@ -124,7 +124,17 @@ function OrderModal() {
           <form className="order-form" onSubmit={handleSubmit}>
             {error && <div className="modal-error">{error}</div>}
 
-            <label>📞 Telefon</label>
+            <label>� Imię</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Np. Jan Kowalski"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+
+            <label>�📞 Telefon</label>
             <div className="phone-input-wrapper">
               <span className="phone-prefix">+48</span>
               <input
@@ -148,22 +158,7 @@ function OrderModal() {
               required
             />
 
-            <label>🔧 Jakiej usługi potrzebujesz?</label>
-            <select
-              name="service"
-              value={formData.service}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Wybierz usługę</option>
-              <option value="Montaż mebli">Montaż mebli</option>
-              <option value="Hydraulika">Hydraulika</option>
-              <option value="Elektryka">Elektryka</option>
-              <option value="Naprawy domowe">Naprawy domowe</option>
-              <option value="Inne">Inne</option>
-            </select>
-
-            <label>📝 Opisz problem</label>
+            <label> Opisz problem</label>
             <textarea
               name="notes"
               placeholder="Np. cieknący kran w kuchni"
@@ -214,7 +209,7 @@ function OrderModal() {
               {loading ? 'Wysyłanie...' : 'Zamów fachowca'}
             </button>
 
-            <span className="info">⏱ Odpowiadamy zwykle w 15 minut</span>
+            <span className="info">⏱ Odpowiadamy w ciągu dnia</span>
           </form>
         )}
       </div>
