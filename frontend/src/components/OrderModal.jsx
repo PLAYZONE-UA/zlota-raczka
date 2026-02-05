@@ -115,9 +115,9 @@ function OrderModal() {
   return (
     <div className="modal">
       <div className="modal-content">
+        <button className="modal-close" onClick={closeModal}>←</button>
         <div className="modal-header">
           <h2> Zamów złotą rączkę</h2>
-          <p>Podaj kilka informacji – oddzwonimy</p>
         </div>
 
         {success ? (
