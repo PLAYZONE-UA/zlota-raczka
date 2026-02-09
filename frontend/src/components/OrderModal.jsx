@@ -8,15 +8,18 @@ import './OrderModal.css'
 function OrderModal() {
   const { isOpen, closeModal } = useContext(OrderModalContext)
   
-  // Заборонити прокручування коли модальне вікно відкрите
+  // Заборонити прокручування та приховати хедер коли модальне вікно відкрите
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
+      document.body.classList.add('modal-open')
     } else {
       document.body.style.overflow = 'auto'
+      document.body.classList.remove('modal-open')
     }
     return () => {
       document.body.style.overflow = 'auto'
+      document.body.classList.remove('modal-open')
     }
   }, [isOpen])
   const [loading, setLoading] = useState(false)
