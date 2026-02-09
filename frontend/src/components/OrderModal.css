@@ -232,25 +232,26 @@ button:disabled {
 .modal-close {
   position: absolute;
   top: 15px;
-  right: 15px;
-  background: none;
+  left: 15px;
+  background: #f0f0f0;
   border: none;
-  font-size: 28px;
+  font-size: 36px;
   cursor: pointer;
-  color: #999;
+  color: #111827;
   padding: 0;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: 8px;
   transition: all 0.2s;
 }
 
 .modal-close:hover {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: #e0e0e0;
+  color: #000;
+  transform: scale(1.1);
 }
 
 @media (max-width: 600px) {
