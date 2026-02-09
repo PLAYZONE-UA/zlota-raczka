@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { OrderModalContext } from '../contexts/OrderModalContext'
 import { getApiUrl } from '../utils/api-utils'
 import './OrderModal.css'
@@ -7,6 +7,18 @@ import './OrderModal.css'
 
 function OrderModal() {
   const { isOpen, closeModal } = useContext(OrderModalContext)
+  
+  // Заборонити прокручування коли модальне вікно відкрите
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [isOpen])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)

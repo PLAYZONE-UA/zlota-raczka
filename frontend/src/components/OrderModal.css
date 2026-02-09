@@ -250,9 +250,15 @@ button:disabled {
 }
 
 @media (max-width: 600px) {
+  .modal {
+    align-items: flex-start;
+    padding-top: 80px;
+  }
+
   .modal-content {
     max-width: 90%;
     padding: 20px;
+    margin-bottom: 20px;
   }
 
   .modal-header h2 {
