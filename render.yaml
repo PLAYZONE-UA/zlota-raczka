@@ -21,7 +21,7 @@ services:
     env: node
     region: frankfurt
     plan: free
-    buildCommand: cd frontend && rm -rf node_modules package-lock.json && npm install && npm run build
+    buildCommand: cd frontend && npm install && npx vite build
     staticPublishPath: ./frontend/dist
     envVars:
       - key: VITE_API_URL
