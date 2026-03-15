@@ -194,14 +194,16 @@ function OrderModal() {
               required
             >
               <option value="">Wybierz usługę</option>
-              <option value="Naprawy domowe">Naprawy domowe</option>
+              <option value="Montaż paneli">Montaż paneli podłogowych</option>
+              <option value="Montaż listew">Montaż listew przypodłogowych</option>
               <option value="Montaż mebli">Montaż mebli</option>
-              <option value="Hydraulika">Hydraulika</option>
-              <option value="Elektryka">Elektryka</option>
-              <option value="Wiercenie">Wiercenie</option>
-              <option value="Sprzątanie domu">Sprzątanie domu</option>
-              <option value="Porządki">Porządki - garaż, piwnica, ogród</option>
-              <option value="Prace blacharskie">Prace blacharskie</option>
+              <option value="Montaż drzwi">Montaż drzwi wewnętrznych</option>
+              <option value="Wiercenie">Wiercenie i montaż na ścianie</option>
+              <option value="Montaż TV">Montaż telewizora na ścianie</option>
+              <option value="Montaż półek">Montaż półek / karniszy / luster</option>
+              <option value="Drobne naprawy">Drobne naprawy domowe</option>
+              <option value="Prace wykończeniowe">Drobne prace wykończeniowe</option>
+              <option value="Poprawki po remoncie">Poprawki po remoncie</option>
               <option value="Inne">Inne</option>
             </select>
             <div className="row">
