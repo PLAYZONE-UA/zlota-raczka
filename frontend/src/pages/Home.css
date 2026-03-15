@@ -171,81 +171,54 @@
   margin-bottom: 6px;
 }
 
-/* ─── PRICING ──────────────────────────────── */
-.pricing {
-  padding: 60px 20px;
-  background: #f5f7fa;
-  text-align: center;
-}
-
-.pricing h2 {
-  margin-bottom: 10px;
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: #111827;
-  letter-spacing: -.025em;
-}
-
-.pricing-subtitle {
-  margin-bottom: 40px;
-  color: #666;
-  font-size: 1rem;
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.price-card {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.price-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-}
-
-.price-card h3 {
-  margin-bottom: 10px;
+.cennik-btn {
+  background: #0b3d91;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  border: none;
   font-weight: 600;
-  font-size: 1.05rem;
-  color: #111827;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.price {
-  font-size: 22px;
+.cennik-btn:hover {
+  background: #0a2e6f;
+  transform: scale(1.02);
+}
+
+.price-info {
+  background: #f0f4ff;
+  border-left: 3px solid #0b3d91;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 12px;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.price-info .price {
+  font-size: 1.25rem;
   font-weight: bold;
   color: #0b3d91;
-  margin-bottom: 15px;
-}
-
-.price-card ul {
-  text-align: left;
-  padding-left: 20px;
-  list-style-type: disc;
-}
-
-.price-card ul li {
-  color: #6b7280;
-  font-size: .875rem;
-  line-height: 1.55;
-  margin-bottom: 6px;
+  margin: 0;
 }
 
 /* ─── RESPONSIVE ────────────────────────────── */
 @media (max-width: 900px) {
   .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .pricing-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -261,11 +234,9 @@
   .service-card h3   { font-size: 0.95rem; }
   .service-card p    { font-size: 0.8rem; }
   .service-card ul   { font-size: 0.8rem; }
-  .pricing           { padding: 2rem 1.5rem; }
-  .pricing h2        { font-size: 1.5rem; }
-  .pricing-grid      { grid-template-columns: 1fr; gap: 1rem; }
-  .price-card        { padding: 1.5rem; }
-  .price             { font-size: 18px; }
+  .cennik-btn        { padding: 0.4rem 1rem; font-size: 0.8rem; margin-top: 8px; }
+  .price-info        { padding: 8px; margin-top: 8px; }
+  .price-info .price { font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
@@ -276,9 +247,6 @@
   .service-card h3   { font-size: 0.85rem; margin-bottom: 0.3rem; }
   .service-card p    { font-size: 0.7rem; line-height: 1.35; }
   .service-card ul   { font-size: 0.7rem; line-height: 1.35; }
-  .pricing-grid      { grid-template-columns: 1fr; }
-  .price-card        { padding: 1rem; }
-  .price             { font-size: 18px; }
-  .call-box h3       { font-size: 1.1rem; }
-  .call-box p        { font-size: 0.85rem; }
-  .call-button       { padding: 10px 24px; font-size: 0.9rem; }
+  .cennik-btn        { padding: 0.35rem 0.75rem; font-size: 0.75rem; margin-top: 6px; }
+  .price-info        { padding: 6px; margin-top: 6px; }
+  .price-info .price { font-size: 0.9rem; }

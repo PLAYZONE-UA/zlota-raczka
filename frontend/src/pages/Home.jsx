@@ -7,6 +7,7 @@ const services = [
   {
     title: 'Montaż paneli i listew',
     desc: 'Układanie paneli podłogowych oraz montaż listew przypodłogowych.',
+    price: 'od 30 zł / m²',
     items: [
       'montaż paneli laminowanych',
       'montaż paneli winylowych (click)',
@@ -18,6 +19,7 @@ const services = [
   {
     title: 'Montaż mebli',
     desc: 'Montaż mebli i wyposażenia w domu lub mieszkaniu.',
+    price: 'od 80 zł',
     items: [
       'montaż mebli IKEA, Leroy Merlin',
       'montaż szaf, komód i regałów',
@@ -29,6 +31,7 @@ const services = [
   {
     title: 'Wiercenie i montaż na ścianie',
     desc: 'Montaż elementów na ścianach i sufitach.',
+    price: 'od 60 zł',
     items: [
       'wiercenie w betonie i cegle',
       'montaż TV na ścianie',
@@ -40,6 +43,7 @@ const services = [
   {
     title: 'Montaż drzwi',
     desc: 'Montaż i regulacja drzwi wewnętrznych.',
+    price: 'od 200 zł',
     items: [
       'montaż drzwi pokojowych',
       'montaż ościeżnicy',
@@ -51,6 +55,7 @@ const services = [
   {
     title: 'Drobne prace remontowe',
     desc: 'Pomoc przy drobnych pracach wykończeniowych.',
+    price: 'od 100 zł',
     items: [
       'silikonowanie łazienki i kuchni',
       'drobne naprawy ścian',
@@ -63,6 +68,7 @@ const services = [
 
 function Home() {
   const [in_, setIn] = useState(false)
+  const [expandedPrice, setExpandedPrice] = useState(null)
   const { openModal } = useContext(OrderModalContext)
 
   useEffect(() => {
@@ -120,75 +126,19 @@ function Home() {
                   <li key={j}>{item}</li>
                 ))}
               </ul>
+              <button 
+                className="cennik-btn"
+                onClick={() => setExpandedPrice(expandedPrice === i ? null : i)}
+              >
+                Cennik
+              </button>
+              {expandedPrice === i && (
+                <div className="price-info">
+                  <p className="price">{s.price}</p>
+                </div>
+              )}
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ─── PRICING ─── */}
-      <section className="pricing">
-        <h2>Cennik usług</h2>
-        <p className="pricing-subtitle">Przykładowe ceny usług. Dokładna wycena zależy od zakresu pracy.</p>
-        <div className="pricing-grid">
-          <div className="price-card">
-            <h3>Montaż paneli</h3>
-            <p className="price">od 30 zł / m²</p>
-            <ul>
-              <li>układanie paneli laminowanych</li>
-              <li>układanie paneli winylowych</li>
-              <li>docinanie przy ścianach</li>
-            </ul>
-          </div>
-
-          <div className="price-card">
-            <h3>Montaż listew przypodłogowych</h3>
-            <p className="price">15 – 20 zł / mb</p>
-            <ul>
-              <li>listwy MDF</li>
-              <li>listwy PVC</li>
-              <li>docinanie narożników</li>
-            </ul>
-          </div>
-
-          <div className="price-card">
-            <h3>Montaż mebli</h3>
-            <p className="price">od 80 zł</p>
-            <ul>
-              <li>komody</li>
-              <li>szafy</li>
-              <li>regały</li>
-            </ul>
-          </div>
-
-          <div className="price-card">
-            <h3>Montaż półek / TV</h3>
-            <p className="price">od 60 zł</p>
-            <ul>
-              <li>wiercenie w betonie</li>
-              <li>montaż półek</li>
-              <li>montaż telewizora</li>
-            </ul>
-          </div>
-
-          <div className="price-card">
-            <h3>Montaż drzwi</h3>
-            <p className="price">od 200 zł</p>
-            <ul>
-              <li>montaż drzwi pokojowych</li>
-              <li>regulacja drzwi</li>
-              <li>montaż klamek</li>
-            </ul>
-          </div>
-
-          <div className="price-card">
-            <h3>Drobne naprawy</h3>
-            <p className="price">od 100 zł</p>
-            <ul>
-              <li>drobne prace domowe</li>
-              <li>silikonowanie</li>
-              <li>małe naprawy</li>
-            </ul>
-          </div>
         </div>
       </section>
 
