@@ -196,7 +196,7 @@ function Home() {
         <div className="call-box">
           <h3>Potrzebujesz pomocy?</h3>
           <p>Zadzwoń – szybka wycena i wolne terminy.</p>
-          <a href="tel:+48123456789" className="call-button">Zadzwoń teraz</a>
+          <a href="tel:+48574621560" className="call-button">Zadzwoń teraz</a>
         </div>
       </section>
 
