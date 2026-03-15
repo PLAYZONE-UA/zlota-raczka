@@ -124,6 +124,82 @@ function Home() {
         </div>
       </section>
 
+      {/* ─── PRICING ─── */}
+      <section className="pricing">
+        <h2>Cennik usług</h2>
+        <p className="pricing-subtitle">Przykładowe ceny usług. Dokładna wycena zależy od zakresu pracy.</p>
+        <div className="pricing-grid">
+          <div className="price-card">
+            <h3>Montaż paneli</h3>
+            <p className="price">od 30 zł / m²</p>
+            <ul>
+              <li>układanie paneli laminowanych</li>
+              <li>układanie paneli winylowych</li>
+              <li>docinanie przy ścianach</li>
+            </ul>
+          </div>
+
+          <div className="price-card">
+            <h3>Montaż listew przypodłogowych</h3>
+            <p className="price">15 – 20 zł / mb</p>
+            <ul>
+              <li>listwy MDF</li>
+              <li>listwy PVC</li>
+              <li>docinanie narożników</li>
+            </ul>
+          </div>
+
+          <div className="price-card">
+            <h3>Montaż mebli</h3>
+            <p className="price">od 80 zł</p>
+            <ul>
+              <li>komody</li>
+              <li>szafy</li>
+              <li>regały</li>
+            </ul>
+          </div>
+
+          <div className="price-card">
+            <h3>Montaż półek / TV</h3>
+            <p className="price">od 60 zł</p>
+            <ul>
+              <li>wiercenie w betonie</li>
+              <li>montaż półek</li>
+              <li>montaż telewizora</li>
+            </ul>
+          </div>
+
+          <div className="price-card">
+            <h3>Montaż drzwi</h3>
+            <p className="price">od 200 zł</p>
+            <ul>
+              <li>montaż drzwi pokojowych</li>
+              <li>regulacja drzwi</li>
+              <li>montaż klamek</li>
+            </ul>
+          </div>
+
+          <div className="price-card">
+            <h3>Drobne naprawy</h3>
+            <p className="price">od 100 zł</p>
+            <ul>
+              <li>drobne prace domowe</li>
+              <li>silikonowanie</li>
+              <li>małe naprawy</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CALL BOX ─── */}
+      <section className="call-section">
+        <div className="call-box">
+          <h3>Potrzebujesz pomocy?</h3>
+          <p>Zadzwoń – szybka wycena i wolne terminy.</p>
+          <a href="tel:+48123456789" className="call-button">Zadzwoń teraz</a>
+        </div>
+      </section>
+
     </div>
   )
 }
