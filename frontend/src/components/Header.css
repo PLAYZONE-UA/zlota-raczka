@@ -21,6 +21,7 @@
   gap: 1.5rem;
   flex: 1;
   justify-content: center;
+  min-height: 56px;
 }
 
 .header__actions {
@@ -68,6 +69,9 @@
   letter-spacing: -0.02em;
   text-align: center;
   white-space: nowrap;
+  line-height: 1;
+  display: flex;
+  align-items: center;
 }
 
 .header__order-btn {
@@ -91,6 +95,7 @@
 .header__buttons {
   display: flex;
   align-items: center;
+  height: 100%;
   gap: 1rem;
 }
 
