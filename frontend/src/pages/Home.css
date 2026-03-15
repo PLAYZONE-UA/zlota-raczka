@@ -240,48 +240,6 @@
   margin-bottom: 6px;
 }
 
-/* ─── CALL SECTION ──────────────────────────────── */
-.call-section {
-  padding: 40px 20px;
-  background: #111827;
-  text-align: center;
-}
-
-.call-box {
-  max-width: 500px;
-  margin: auto;
-  color: white;
-}
-
-.call-box h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: white;
-}
-
-.call-box p {
-  font-size: 1rem;
-  margin-bottom: 20px;
-  color: #d1d5db;
-}
-
-.call-button {
-  display: inline-block;
-  background: #0b3d91;
-  color: white;
-  padding: 12px 32px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.call-button:hover {
-  background: #0a2e6f;
-  transform: scale(1.05);
-}
-
 /* ─── RESPONSIVE ────────────────────────────── */
 @media (max-width: 900px) {
   .services-grid {
@@ -308,9 +266,6 @@
   .pricing-grid      { grid-template-columns: 1fr; gap: 1rem; }
   .price-card        { padding: 1.5rem; }
   .price             { font-size: 18px; }
-  .call-section      { padding: 2rem 1.5rem; }
-  .call-box h3       { font-size: 1.25rem; }
-  .call-box p        { font-size: 0.9rem; }
 }
 
 @media (max-width: 480px) {
@@ -327,4 +282,3 @@
   .call-box h3       { font-size: 1.1rem; }
   .call-box p        { font-size: 0.85rem; }
   .call-button       { padding: 10px 24px; font-size: 0.9rem; }
-}

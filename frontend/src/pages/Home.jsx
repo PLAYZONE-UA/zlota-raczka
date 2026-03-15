@@ -79,18 +79,19 @@ function Home() {
 
           <div className={`home__hero-text ${in_ ? 'home__hero-text--in' : ''}`}>
             <p className="home__hero-p">
-              Profesjonalne drobne naprawy i prace domowe w <strong style={{ fontWeight: '700' }}>Warszawie i okolicach.</strong><br />
-              Oferujemy montaż, naprawy, drobne prace remontowe i pomoc w domu – szybko, uczciwie i bez problemów.
+              Profesjonalne prace domowe i instalacyjne w <strong style={{ fontWeight: '700' }}>Warszawie i okolicach.</strong><br />
+              Świadczymy kompleksowe usługi w domu i mieszkaniu – montaż mebli i wyposażenia, naprawy techniczne, instalacje oraz prace remontowe. Działamy szybko, rzetelnie i bez ukrytych kosztów.
             </p>
             
             <h3 style={{ marginTop: '20px', marginBottom: '12px', fontSize: '16px', fontWeight: '600' }}>
               Dlaczego warto nas wybrać:
             </h3>
             <ul style={{ marginBottom: '20px', listStyle: 'none', padding: 0 }}>
-              <li style={{ marginBottom: '8px' }}>✓ Dojazd tego samego dnia</li>
-              <li style={{ marginBottom: '8px' }}>✓ Własne narzędzia – nie musisz niczego przygotowywać</li>
-              <li style={{ marginBottom: '8px' }}>✓ Drobne prace – bez dużych remontów</li>
-              <li style={{ marginBottom: '8px' }}>✓ Elastyczne godziny wizyt i indywidualne podejście</li>
+              <li style={{ marginBottom: '8px' }}>✓ Szybki dojazd – realizacja często tego samego dnia</li>
+              <li style={{ marginBottom: '8px' }}>✓ Pełne wyposażenie i doświadczenie – nie musisz niczego przygotowywać</li>
+              <li style={{ marginBottom: '8px' }}>✓ Szeroki zakres usług – od montażu, przez naprawy techniczne, po prace remontowe</li>
+              <li style={{ marginBottom: '8px' }}>✓ Elastyczne terminy i indywidualne podejście – dostosowujemy się do Twoich potrzeb</li>
+              <li style={{ marginBottom: '8px' }}>✓ Gwarantujemy profesjonalizm, bezpieczeństwo i najwyższą jakość wykonania każdej pracy</li>
             </ul>
 
           </div>
@@ -188,15 +189,6 @@ function Home() {
               <li>małe naprawy</li>
             </ul>
           </div>
-        </div>
-      </section>
-
-      {/* ─── CALL BOX ─── */}
-      <section className="call-section">
-        <div className="call-box">
-          <h3>Potrzebujesz pomocy?</h3>
-          <p>Zadzwoń – szybka wycena i wolne terminy.</p>
-          <a href="tel:+48574621560" className="call-button">Zadzwoń teraz</a>
         </div>
       </section>
 

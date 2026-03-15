@@ -6,7 +6,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer__inner">
-        <p className="footer__brand">Złota Rączka – Twój „mąż na godzinę"</p>
+        <p className="footer__brand">Złota Rączka | Profesjonalne prace domowe w Warszawie</p>
       </div>
     </footer>
   )
