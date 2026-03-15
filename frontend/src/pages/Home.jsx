@@ -1,18 +1,64 @@
 import { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Hammer, Wrench, Zap, Droplets, Trash2 } from 'lucide-react'
 import { OrderModalContext } from '../contexts/OrderModalContext'
 import './Home.css'
 
 const services = [
-  { title: 'Naprawy domowe', desc: 'Drobne poprawki, regulacje, naprawy',   icon: Hammer   },
-  { title: 'Montaż',         desc: 'Meble, półki, lampy, karnisze',         icon: Wrench   },
-  { title: 'Elektryka',      desc: 'Gniazdka, lampy, włączniki',            icon: Zap      },
-  { title: 'Hydraulika',     desc: 'Kran, syfon, uszczelnienia',            icon: Droplets },
-  { title: 'Wiercenie',      desc: 'Ściany, sufity, montaż na ścianie',     icon: Wrench   },
-  { title: 'Sprzątanie domu', desc: 'Generalne czyszczenie wnętrz',         icon: Trash2   },
-  { title: 'Porządki',       desc: 'Garaż, piwnica, ogród',                icon: Trash2   },
-  { title: 'Prace blacharskie', desc: 'Obróbki, poprawki, drobne naprawy (bez dachów)', icon: Hammer },
+  {
+    title: 'Montaż paneli i listew',
+    desc: 'Układanie paneli podłogowych oraz montaż listew przypodłogowych.',
+    items: [
+      'montaż paneli laminowanych',
+      'montaż paneli winylowych (click)',
+      'montaż listew przypodłogowych',
+      'docinanie listew pod kątem',
+      'montaż progów podłogowych'
+    ]
+  },
+  {
+    title: 'Montaż mebli',
+    desc: 'Montaż mebli i wyposażenia w domu lub mieszkaniu.',
+    items: [
+      'montaż mebli IKEA, Leroy Merlin',
+      'montaż szaf, komód i regałów',
+      'montaż półek',
+      'montaż karniszy i rolet',
+      'montaż lamp'
+    ]
+  },
+  {
+    title: 'Wiercenie i montaż na ścianie',
+    desc: 'Montaż elementów na ścianach i sufitach.',
+    items: [
+      'wiercenie w betonie i cegle',
+      'montaż TV na ścianie',
+      'montaż półek i luster',
+      'montaż obrazów',
+      'montaż szafek'
+    ]
+  },
+  {
+    title: 'Montaż drzwi',
+    desc: 'Montaż i regulacja drzwi wewnętrznych.',
+    items: [
+      'montaż drzwi pokojowych',
+      'montaż ościeżnicy',
+      'regulacja drzwi',
+      'montaż klamek',
+      'drobne poprawki'
+    ]
+  },
+  {
+    title: 'Drobne prace remontowe',
+    desc: 'Pomoc przy drobnych pracach wykończeniowych.',
+    items: [
+      'silikonowanie łazienki i kuchni',
+      'drobne naprawy ścian',
+      'montaż paneli dekoracyjnych',
+      'poprawki po remoncie',
+      'montaż listew wykończeniowych'
+    ]
+  }
 ]
 
 function Home() {
@@ -45,7 +91,6 @@ function Home() {
               <li style={{ marginBottom: '8px' }}>✓ Własne narzędzia – nie musisz niczego przygotowywać</li>
               <li style={{ marginBottom: '8px' }}>✓ Drobne prace – bez dużych remontów</li>
               <li style={{ marginBottom: '8px' }}>✓ Elastyczne godziny wizyt i indywidualne podejście</li>
-              <li style={{ marginBottom: '16px' }}>✓ Jeśli nie możemy pomóc, nie płacisz za dojazd</li>
             </ul>
 
           </div>
@@ -62,18 +107,20 @@ function Home() {
       </section>
 
       {/* ─── SERVICES ─── */}
-      <section className="home__services">
-        <div className="home__services-wrap">
-          <h2 className="home__services-h2">Jak mogę pomóc?</h2>
-          <div className="home__svc-grid">
-            {services.map((s, i) => (
-              <div key={i} className="home__svc">
-                <s.icon size={26} strokeWidth={1.5} className="home__svc-icon" />
-                <h3 className="home__svc-h3">{s.title}</h3>
-                <p className="home__svc-p">{s.desc}</p>
-              </div>
-            ))}
-          </div>
+      <section className="services">
+        <h2>Jak mogę pomóc?</h2>
+        <div className="services-grid">
+          {services.map((s, i) => (
+            <div key={i} className="service-card">
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+              <ul>
+                {s.items.map((item, j) => (
+                  <li key={j}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
 
