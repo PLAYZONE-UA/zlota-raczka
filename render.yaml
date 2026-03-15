@@ -21,11 +21,13 @@ services:
     env: node
     region: frankfurt
     plan: free
-    buildCommand: cd frontend && npm install --include=dev && npx vite build
+    buildCommand: cd frontend && npm install --production=false && npx vite build
     staticPublishPath: ./frontend/dist
     envVars:
       - key: VITE_API_URL
         value: https://zlota-raczka-backend.onrender.com
+      - key: NODE_ENV
+        value: development
     routes:
       - type: rewrite
         source: /*
