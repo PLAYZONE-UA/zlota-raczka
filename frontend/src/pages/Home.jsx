@@ -5,7 +5,7 @@ import './Home.css'
 
 const services = [
   {
-    title: 'Montaż paneli od 30 zł / m²',
+    title: 'Montaż paneli i listew',
     desc: 'Układanie paneli podłogowych oraz montaż listew przypodłogowych.',
     price: [
       'Montaż paneli od 30 zł / m²',
@@ -14,7 +14,7 @@ const services = [
     items: [
       'montaż paneli laminowanych',
       'montaż paneli winylowych (click)',
-      'montaż listew przypodłogowych 15-20 zł / m',
+      'montaż listew przypodłogowych',
       'docinanie listew pod kątem',
       'montaż progów podłogowych'
     ]
