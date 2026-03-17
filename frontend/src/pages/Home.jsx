@@ -7,7 +7,10 @@ const services = [
   {
     title: 'Montaż paneli od 30 zł / m²',
     desc: 'Układanie paneli podłogowych oraz montaż listew przypodłogowych.',
-    price: 'od 30 zł / m²',
+    price: [
+      'Montaż paneli od 30 zł / m²',
+      'Montaż listew przypodłogowych 15-20 zł / mb'
+    ],
     items: [
       'montaż paneli laminowanych',
       'montaż paneli winylowych (click)',
@@ -134,7 +137,13 @@ function Home() {
               </button>
               {expandedPrice === i && (
                 <div className="price-info">
-                  <p className="price">{s.price}</p>
+                  {Array.isArray(s.price) ? (
+                    s.price.map((priceLine, priceIndex) => (
+                      <p key={priceIndex} className="price">{priceLine}</p>
+                    ))
+                  ) : (
+                    <p className="price">{s.price}</p>
+                  )}
                 </div>
               )}
             </div>
