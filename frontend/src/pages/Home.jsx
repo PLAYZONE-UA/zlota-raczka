@@ -46,7 +46,10 @@ const services = [
   {
     title: 'Montaż drzwi',
     desc: 'Montaż i regulacja drzwi wewnętrznych oraz wejściowych.',
-    price: 'od 500 zł',
+    price: [
+      'Montaż drzwi pokojowych od 150 zł',
+      'Montaż drzwi wejściowych od 450 zł'
+    ],
     items: [
       'montaż drzwi pokojowych',
       'montaż drzwi wejściowych',
@@ -59,7 +62,7 @@ const services = [
   {
     title: 'Drobne prace remontowe',
     desc: 'Pomoc przy drobnych pracach wykończeniowych.',
-    price: 'od 100 zł',
+    price: 'od 60 zł',
     items: [
       'silikonowanie łazienki i kuchni',
       'drobne naprawy ścian',
