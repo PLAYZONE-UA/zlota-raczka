@@ -45,10 +45,11 @@ const services = [
   },
   {
     title: 'Montaż drzwi',
-    desc: 'Montaż i regulacja drzwi wewnętrznych.',
-    price: 'od 200 zł',
+    desc: 'Montaż i regulacja drzwi wewnętrznych oraz wejściowych.',
+    price: 'od 500 zł',
     items: [
       'montaż drzwi pokojowych',
+      'montaż drzwi wejściowych',
       'montaż ościeżnicy',
       'regulacja drzwi',
       'montaż klamek',
