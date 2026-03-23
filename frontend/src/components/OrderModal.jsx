@@ -248,7 +248,7 @@ function OrderModal() {
               {loading ? 'Wysyłanie...' : 'Zamów fachowca'}
             </button>
 
-            <span className="info">⏱ Odpowiadamy w ciągu dnia</span>
+            <span className="info">⏱ Odpowiadamy tego samego dnia</span>
           </form>
         )}
       </div>

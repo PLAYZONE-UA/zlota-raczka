@@ -68,7 +68,9 @@ const services = [
       'drobne naprawy ścian',
       'montaż paneli dekoracyjnych',
       'poprawki po remoncie',
-      'montaż listew wykończeniowych'
+      'montaż listew wykończeniowych',
+      'czyszczenie fug',
+      'malowanie mebli i drewnianych elementów'
     ]
   }
 ]
