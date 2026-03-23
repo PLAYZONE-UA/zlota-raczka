@@ -40,7 +40,8 @@ const services = [
       'montaż TV na ścianie',
       'montaż półek i luster',
       'montaż obrazów',
-      'montaż szafek'
+      'montaż szafek',
+      'montaż karniszy'
     ]
   },
   {
