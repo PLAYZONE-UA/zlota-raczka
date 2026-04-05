@@ -175,7 +175,7 @@ async def update_order_status(
 
 @router.delete("/{order_id}", response_model=MessageResponse)
 async def delete_order(order_id: int, db: AsyncSession = Depends(get_db)):
-    """Delete an order"""
+    """Delete an order and associated files"""
     try:
         stmt = select(Order).where(Order.id == order_id)
         result = await db.execute(stmt)
