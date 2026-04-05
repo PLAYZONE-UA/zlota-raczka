@@ -30,6 +30,20 @@ const projects = [
 
 function NaszeRealizacje() {
   const [expandedId, setExpandedId] = useState(null)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxImage, setLightboxImage] = useState(null)
+
+  const openLightbox = (src) => {
+    setLightboxImage(src)
+    setLightboxOpen(true)
+    document.body.style.overflow = 'hidden'
+  }
+
+  const closeLightbox = () => {
+    setLightboxOpen(false)
+    setLightboxImage(null)
+    document.body.style.overflow = ''
+  }
 
   return (
     <div className="realizacje">
@@ -51,13 +65,13 @@ function NaszeRealizacje() {
                 <div className="project-card__images">
                   {project.imageBefore && (
                     <div className="project-card__image">
-                      <img src={project.imageBefore} alt={`${project.title} - przed`} onError={e => { e.target.style.display = 'none' }} />
+                      <img src={project.imageBefore} alt={`${project.title} - przed`} onClick={() => openLightbox(project.imageBefore)} style={{cursor: 'pointer'}} onError={e => { e.target.style.display = 'none' }} />
                       <span className="project-card__label">Przed</span>
                     </div>
                   )}
                   {project.imageAfter && (
                     <div className="project-card__image">
-                      <img src={project.imageAfter} alt={`${project.title} - po`} onError={e => { e.target.style.display = 'none' }} />
+                      <img src={project.imageAfter} alt={`${project.title} - po`} onClick={() => openLightbox(project.imageAfter)} style={{cursor: 'pointer'}} onError={e => { e.target.style.display = 'none' }} />
                       <span className="project-card__label">Po</span>
                     </div>
                   )}
@@ -67,14 +81,14 @@ function NaszeRealizacje() {
                 <div className="project-card__gallery">
                   {project.images.map((img, idx) => (
                     <div key={idx} className="project-card__image">
-                      <img src={img} alt={`${project.title} - ${idx + 1}`} onError={e => { e.target.style.display = 'none' }} />
+                      <img src={img} alt={`${project.title} - ${idx + 1}`} onClick={() => openLightbox(img)} style={{cursor: 'pointer'}} onError={e => { e.target.style.display = 'none' }} />
                     </div>
                   ))}
                 </div>
               )}
               {project.image && (
                 <div className="project-card__image">
-                  <img src={project.image} alt={project.title} onError={e => { e.target.style.display = 'none' }} />
+                  <img src={project.image} alt={project.title} onClick={() => openLightbox(project.image)} style={{cursor: 'pointer'}} onError={e => { e.target.style.display = 'none' }} />
                 </div>
               )}
               
@@ -101,6 +115,16 @@ function NaszeRealizacje() {
           ))}
         </div>
       </section>
+
+      {/* ─── LIGHTBOX MODAL ─── */}
+      {lightboxOpen && (
+        <div className="lightbox" onClick={closeLightbox}>
+          <div className="lightbox__content" onClick={(e) => e.stopPropagation()}>
+            <img src={lightboxImage} alt="Enlarged view" className="lightbox__image" />
+            <button className="lightbox__close" onClick={closeLightbox}>✕</button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
