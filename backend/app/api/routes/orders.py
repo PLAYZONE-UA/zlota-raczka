@@ -180,12 +180,15 @@ async def delete_order(order_id: int, db: AsyncSession = Depends(get_db)):
         if not order:
             raise HTTPException(status_code=404, detail="Замовлення не знайдено")
         
-        # Delete files
+        # Delete files (non-critical)
         if order.photos:
-            await delete_multiple_files(order.photos)
+            try:
+                await delete_multiple_files(order.photos)
+            except Exception as file_err:
+                print(f"File deletion error (non-critical): {file_err}")
         
         # Delete order
-        db.delete(order)
+        await db.delete(order)
         await db.commit()
         
         return MessageResponse(message="Замовлення видалено")
@@ -193,4 +196,5 @@ async def delete_order(order_id: int, db: AsyncSession = Depends(get_db)):
         raise
     except Exception as e:
         await db.rollback()
+        print(f"Delete order error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
