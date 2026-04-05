@@ -1,54 +1,56 @@
 /* ================================================
-   HOME — landing page
+   HOME — PREMIUM UPGRADE
    ================================================ */
 
 .home { width: 100%; }
 
 /* ─── HERO ─────────────────────────────────── */
 .home__hero {
-  max-width: 72rem;
+  max-width: 80rem;
   margin: 0 auto;
-  padding: 2rem 1.5rem 1.2rem 1.5rem;
+  padding: 3rem 1.5rem 2rem;
 }
 
 .home__hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 4rem;
   align-items: center;
 }
 
-/* text block — slide-up on mount */
+/* animation */
 .home__hero-text {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .65s cubic-bezier(.16,1,.3,1),
-              transform .65s cubic-bezier(.16,1,.3,1);
+  transform: translateY(30px);
+  transition: opacity .7s cubic-bezier(.16,1,.3,1),
+              transform .7s cubic-bezier(.16,1,.3,1);
 }
 .home__hero-text--in {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* 🔥 FIXED typography */
 .home__hero-h1 {
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -.03em;
-  color: #111827;
-  margin-bottom: 1.5rem;
-  white-space: nowrap;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #0f172a;
+  margin-bottom: 1.2rem;
+  max-width: 600px; /* 🔥 ключ */
 }
 
 .home__hero-p {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #4b5563;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #475569;
   line-height: 1.7;
-  margin-bottom: 1rem;
-  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
 }
 
+/* buttons */
 .home__hero-btns {
   display: flex;
   gap: .75rem;
@@ -56,198 +58,164 @@
 }
 
 .home__btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: .75rem 1.5rem;
-  border-radius: .5rem;
+  border-radius: 999px; /* 🔥 modern */
   font-weight: 600;
-  font-size: 1rem;
+  font-size: .95rem;
   text-decoration: none;
-  transition: background .2s, color .2s;
+  transition: all .25s ease;
 }
 
+/* 🔥 premium primary */
 .home__btn--dark {
-  background: #111827;
+  background: linear-gradient(135deg, #3A86FF, #6366F1);
   color: #fff;
-}
-.home__btn--dark:hover {
-  background: #374151;
-  color: #fff;
+  box-shadow: 0 10px 25px rgba(99,102,241,0.25);
 }
 
+.home__btn--dark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(99,102,241,0.35);
+}
+
+/* secondary */
 .home__btn--outline {
   background: transparent;
-  color: #111827;
-  border: 1.5px solid #111827;
-}
-.home__btn--outline:hover {
-  background: #f3f4f6;
-  color: #111827;
+  color: #0f172a;
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
+.home__btn--outline:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* note */
 .home__hero-note {
   margin-top: 1.5rem;
   font-size: .8rem;
-  color: #9ca3af;
+  color: #94a3b8;
 }
 
-/* image block — fade-in on mount (delayed) */
+/* image */
 .home__hero-img {
   opacity: 0;
   transition: opacity .7s ease .2s;
-  border-radius: 1rem;
+  border-radius: 1.2rem;
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0,0,0,.1),
-              0  8px 10px -6px rgba(0,0,0,.1);
   height: 420px;
   background: linear-gradient(135deg, #d1d5db, #9ca3af);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.15); /* 🔥 depth */
 }
+
 .home__hero-img--in {
   opacity: 1;
 }
+
 .home__hero-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 /* ─── SERVICES ──────────────────────────────── */
 .services {
-  padding: 60px 20px;
+  padding: 80px 20px;
   max-width: 1200px;
   margin: auto;
 }
 
 .services h2 {
   text-align: center;
-  margin-bottom: 40px;
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: #111827;
-  letter-spacing: -.025em;
+  margin-bottom: 50px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.03em;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
+/* 🔥 premium cards */
 .service-card {
-  background: #f7f7f7;
-  padding: 20px;
-  border-radius: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.25s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0,0,0,.07);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.08);
 }
 
 .service-card h3 {
   margin-bottom: 10px;
   font-weight: 600;
   font-size: 1.05rem;
-  color: #111827;
+  color: #0f172a;
 }
 
 .service-card p {
-  color: #6b7280;
-  font-size: .875rem;
-  line-height: 1.55;
+  color: #64748b;
+  font-size: .9rem;
+  line-height: 1.6;
   margin-bottom: 12px;
 }
 
-.service-card ul {
-  padding-left: 18px;
-  list-style-type: disc;
-}
-
 .service-card ul li {
-  color: #6b7280;
-  font-size: .875rem;
-  line-height: 1.55;
-  margin-bottom: 6px;
+  color: #64748b;
+  font-size: .85rem;
 }
 
+/* button */
 .cennik-btn {
-  background: #0b3d91;
+  background: linear-gradient(135deg, #3A86FF, #6366F1);
   color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 6px;
+  padding: 0.5rem 1.3rem;
+  border-radius: 999px;
   border: none;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   cursor: pointer;
   margin-top: 12px;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .cennik-btn:hover {
-  background: #0a2e6f;
-  transform: scale(1.02);
+  transform: translateY(-2px);
 }
 
+/* price box */
 .price-info {
-  background: #f0f4ff;
-  border-left: 3px solid #0b3d91;
+  background: rgba(59,130,246,0.08);
+  border-left: 3px solid #3A86FF;
   padding: 12px;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-top: 12px;
-  animation: slideDown 0.2s ease;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .price-info .price {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #0b3d91;
-  margin: 0;
+  color: #2563eb;
 }
 
 /* ─── RESPONSIVE ────────────────────────────── */
-@media (max-width: 900px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 700px) {
-  .home__hero        { padding: 2rem 1.5rem 0.5rem 1.5rem; }
-  .home__hero-grid   { grid-template-columns: 1fr; gap: 2rem; }
-  .home__hero-img    { height: 260px; order: -1; }
-  .services          { padding: 2rem 1.5rem; }
-  .services h2       { margin-bottom: 1.5rem; font-size: 1.5rem; }
-  .services-grid     { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
-  .service-card      { padding: 1rem; }
-  .service-card h3   { font-size: 0.95rem; }
-  .service-card p    { font-size: 0.8rem; }
-  .service-card ul   { font-size: 0.8rem; }
-  .cennik-btn        { padding: 0.4rem 1rem; font-size: 0.8rem; margin-top: 8px; }
-  .price-info        { padding: 8px; margin-top: 8px; }
-  .price-info .price { font-size: 1rem; }
+  .home__hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .home__hero-img { height: 260px; order: -1; }
 }
 
 @media (max-width: 480px) {
-  .home__hero-h1     { font-size: 2rem; }
-  .home__hero-p      { font-size: 1rem; }
-  .services-grid     { grid-template-columns: 1fr; gap: 0.65rem; }
-  .service-card      { padding: 0.75rem; }
-  .service-card h3   { font-size: 0.85rem; margin-bottom: 0.3rem; }
-  .service-card p    { font-size: 0.7rem; line-height: 1.35; }
-  .service-card ul   { font-size: 0.7rem; line-height: 1.35; }
-  .cennik-btn        { padding: 0.35rem 0.75rem; font-size: 0.75rem; margin-top: 6px; }
-  .price-info        { padding: 6px; margin-top: 6px; }
-  .price-info .price { font-size: 0.9rem; }
+  .home__hero-h1 { font-size: 2rem; }
+  .home__hero-p { font-size: 1rem; }
 }
