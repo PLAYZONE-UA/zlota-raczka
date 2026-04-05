@@ -40,7 +40,7 @@ function Header() {
             <button onClick={openModal} className="header__order-btn">Zamów usługę</button>
             <a href="tel:+48574621560" className="header__call-btn">Zadzwoń teraz</a>
             {showRealizacje && (
-              <Link to="/realizacje" className="header__call-btn">Realizacje</Link>
+              <Link to="/realizacje" className="header__realizacje-btn">Realizacje</Link>
             )}
           </div>
         </div>

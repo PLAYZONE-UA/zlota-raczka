@@ -71,9 +71,9 @@
   box-shadow: 0 6px 20px rgba(58, 134, 255, 0.35);
 }
 
-/* ☎ Call button */
+/* ☎ Call button — Deep green */
 .header__call-btn {
-  background: #0f172a;
+  background: #6A8E72;
   color: #fff;
   padding: 0.7rem 1.4rem;
   border-radius: 999px;
@@ -86,8 +86,28 @@
 }
 
 .header__call-btn:hover {
-  background: #1e293b;
+  background: #588157;
   transform: translateY(-1px);
+}
+
+/* 🎨 Realizacje button — Blue-violet gradient */
+.header__realizacje-btn {
+  background: linear-gradient(135deg, #3B82F6, #7F5A83);
+  color: #fff;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(123, 90, 131, 0.25);
+}
+
+.header__realizacje-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(123, 90, 131, 0.35);
 }
 
 /* 🧊 Secondary */
@@ -147,7 +167,8 @@
   }
 
   .header__order-btn,
-  .header__call-btn {
+  .header__call-btn,
+  .header__realizacje-btn {
     padding: 0.55rem 1rem;
     font-size: 0.9rem;
   }
