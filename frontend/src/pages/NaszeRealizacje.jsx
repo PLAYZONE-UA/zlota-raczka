@@ -9,15 +9,15 @@ const projects = [
     title: 'Montaż drzwi',
     desc: 'Drzwi wypadły i wymagały ponownego montażu – drzwi wewnętrzne. Poniżej znajdują się dwa zdjęcia: przed naprawą i po niej, pokazujące problem oraz zastosowane rozwiązanie. Montaż został wykonany dokładnie, aby drzwi działały poprawnie i bezpiecznie.',
     time: '4 godziny',
-    imageBefore: '/images/project1-before.jpg',
-    imageAfter: '/images/project1-after.jpg'
+    imageBefore: '/images/project1-after.jpg',
+    imageAfter: '/images/project1-before.jpg'
   },
   {
     id: 2,
-    title: 'Montaż szafy pięciodrzwiowej',
-    desc: 'Montaż meblościanki IKEA z regulacją i dopasowaniem do wnęki.',
-    time: '1 dzień',
-    image: '/images/project2.jpg'
+    title: 'Montaż szafy',
+    desc: 'Profesjonalny montaż szafy z IKEA. Szafa zamontowana stabilnie i zgodnie z instrukcją producenta, gotowa do użytkowania.',
+    time: '2 godziny',
+    image: '/images/project2-wardrobe.jpg'
   },
   {
     id: 3,
