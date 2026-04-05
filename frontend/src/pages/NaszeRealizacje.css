@@ -9,8 +9,8 @@
 
 /* ─── HERO SECTION ─────────────────────────────── */
 .realizacje__hero {
-  background: linear-gradient(135deg, #0b3d91 0%, #1e5fb8 100%);
-  color: white;
+  background: #ffffff;
+  color: #111827;
   padding: 4rem 1.5rem;
   text-align: center;
   position: relative;
@@ -20,7 +20,7 @@
   position: absolute;
   top: 1.5rem;
   left: 1.5rem;
-  background: rgba(255, 255, 255, 0.2);
+  background: #0b3d91;
   color: white;
   width: 44px;
   height: 44px;
@@ -34,7 +34,7 @@
 }
 
 .realizacje__back:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: #082d6b;
   transform: translateX(-4px);
 }
 
@@ -48,7 +48,7 @@
 .realizacje__hero p {
   font-size: 1.1rem;
   font-weight: 500;
-  opacity: 0.95;
+  opacity: 0.85;
 }
 
 /* ─── CONTAINER ────────────────────────────────── */

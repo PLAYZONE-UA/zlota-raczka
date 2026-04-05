@@ -97,6 +97,7 @@
   align-items: center;
   height: 100%;
   gap: 1rem;
+  vertical-align: middle;
 }
 
 .header__call-btn {
@@ -111,12 +112,22 @@
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   transition: all 0.3s ease;
+  height: 100%;
 }
 
 .header__call-btn:hover {
   background: #16a34a;
+}
+
+.header__call-btn:last-child {
+  background: #7f1d1d;
+}
+
+.header__call-btn:last-child:hover {
+  background: #5f0f1c;
 }
 
 .header__btn {
