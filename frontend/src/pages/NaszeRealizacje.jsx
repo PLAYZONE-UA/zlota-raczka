@@ -6,10 +6,11 @@ import './NaszeRealizacje.css'
 const projects = [
   {
     id: 1,
-    title: 'Montaż paneli w mieszkaniu 60m²',
-    desc: 'Kompleksowy montaż paneli laminowanych i listew w całym mieszkaniu.',
-    time: '2 dni',
-    image: '/images/project1.jpg'
+    title: 'Montaż drzwi',
+    desc: 'Drzwi wypadły i wymagały ponownego montażu – drzwi wewnętrzne. Poniżej znajdują się dwa zdjęcia: przed naprawą i po niej, pokazujące problem oraz zastosowane rozwiązanie. Montaż został wykonany dokładnie, aby drzwi działały poprawnie i bezpiecznie.',
+    time: '4 godziny',
+    imageBefore: '/images/project1-before.jpg',
+    imageAfter: '/images/project1-after.jpg'
   },
   {
     id: 2,
@@ -46,6 +47,22 @@ function NaszeRealizacje() {
         <div className="realizacje__grid">
           {projects.map((project) => (
             <div key={project.id} className="project-card">
+              {(project.imageBefore || project.imageAfter) && (
+                <div className="project-card__images">
+                  {project.imageBefore && (
+                    <div className="project-card__image">
+                      <img src={project.imageBefore} alt={`${project.title} - przed`} onError={e => { e.target.style.display = 'none' }} />
+                      <span className="project-card__label">Przed</span>
+                    </div>
+                  )}
+                  {project.imageAfter && (
+                    <div className="project-card__image">
+                      <img src={project.imageAfter} alt={`${project.title} - po`} onError={e => { e.target.style.display = 'none' }} />
+                      <span className="project-card__label">Po</span>
+                    </div>
+                  )}
+                </div>
+              )}
               {project.image && (
                 <div className="project-card__image">
                   <img src={project.image} alt={project.title} onError={e => { e.target.style.display = 'none' }} />
