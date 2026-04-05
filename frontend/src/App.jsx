@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Order from './pages/Order'
 import Login from './pages/Login'
 import Admin from './pages/Admin'
+import NaszeRealizacje from './pages/NaszeRealizacje'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -19,6 +20,7 @@ export default function App() {
           <main style={{ flex: 1 }}>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/realizacje" element={<NaszeRealizacje />} />
               <Route path="/zamowienie" element={<Order />} />
               <Route path="/zamovlennya" element={<Order />} />
               <Route path="/login" element={<Login />} />

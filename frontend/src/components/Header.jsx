@@ -25,6 +25,9 @@ function Header() {
       <div className="header__inner">
         <div className="header__content">
           <Link to="/" className="header__brand">Złota Rączka – Twój „mąż na godzinę"</Link>
+          <nav className="header__nav">
+            <Link to="/realizacje" className="header__nav-link">Realizacje</Link>
+          </nav>
           <div className="header__buttons">
             <button onClick={openModal} className="header__order-btn">Zamów usługę</button>
             <a href="tel:+48574621560" className="header__call-btn">Zadzwoń teraz</a>
