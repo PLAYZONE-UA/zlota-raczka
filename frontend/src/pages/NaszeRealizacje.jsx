@@ -31,8 +31,13 @@ const projects = [
     title: 'Montaż siatki na balkon',
     desc: 'Profesjonalny montaż siatki na balkon, skutecznie chroniącej przed gołębiami. Siatka zamontowana starannie i bezpiecznie, estetycznie dopasowana do balkonu, zapewniając spokój i czystość w przestrzeni.',
     time: '3 godziny',
-    image: '/images/project4-balcony.jpg'
-  }
+    image: '/images/project4-balcony.jpg'  },
+  {
+    id: 5,
+    title: 'Montaż zlewu kuchennego',
+    desc: 'Nowy zlew kuchenny zamontowany precyzyjnie i solidnie, z dbałością o szczelność i wygodę użytkowania. Gotowy do codziennej pracy, zapewnia komfort podczas gotowania i mycia naczyń.',
+    time: '2 godziny',
+    image: '/images/project5-sink.jpg'  }
 ]
 
 function NaszeRealizacje() {
