@@ -28,12 +28,14 @@ async def create_order(
         if not validate_phone_number(phone):
             raise HTTPException(status_code=400, detail="Неправильний номер телефону")
         
-        # Перевіримо макс 2 замовлення per phone
-        count_stmt = select(func.count()).select_from(Order).where(Order.phone == phone)
+        # Перевіримо макс 2 замовлення в один день з одного номера
+        count_stmt = select(func.count()).select_from(Order).where(
+            and_(Order.phone == phone, Order.selected_date == selected_date)
+        )
         count_result = await db.execute(count_stmt)
         order_count = count_result.scalar()
         if order_count >= 2:
-            raise HTTPException(status_code=400, detail="Già hai 2 ordini. Contatta direttamente per più dettagli.")
+            raise HTTPException(status_code=400, detail="Już masz 2 zamówienia na ten numer telefonu. Skontaktuj się bezpośrednio z nami, jeśli potrzebujesz więcej zamówień.")
         
         # Validate text fields
         if not validate_text_length(address, 5, 255):
