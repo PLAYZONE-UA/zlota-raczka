@@ -89,9 +89,14 @@ function OrderModal() {
         body: formDataObj
       })
 
+      console.log('Response status:', response.status)
+      const responseBody = await response.json()
+      console.log('Response body:', responseBody)
+
       if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.detail || 'Błąd przy tworzeniu zamówienia')
+        const errorMessage = responseBody.detail || responseBody.message || JSON.stringify(responseBody) || 'Błąd przy tworzeniu zamówienia'
+        console.error('Server error:', errorMessage)
+        throw new Error(errorMessage)
       }
 
       setSuccess(true)
