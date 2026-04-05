@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { ordersApi, datesApi } from '../services/api'
 import './Admin.css'
 import { Trash2 } from 'lucide-react'
 
 function Admin() {
+  const navigate = useNavigate()
   const [orders, setOrders] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [filterStatus, setFilterStatus] = useState('all')
@@ -14,6 +16,14 @@ function Admin() {
   const [newDateInput, setNewDateInput] = useState('')
 
   useEffect(() => {
+    // Перевірка автентифікації
+    const adminToken = localStorage.getItem('adminToken')
+    if (!adminToken) {
+      toast.error('Brak dostępu - wymagane zalogowanie')
+      navigate('/login')
+      return
+    }
+    
     fetchOrders()
     fetchDates()
   }, [])
@@ -111,6 +121,12 @@ function Admin() {
     return colors[status] || '#6b7280'
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('adminToken')
+    toast.info('Wylogowany')
+    navigate('/login')
+  }
+
   const getStatusLabel = (status) => {
     const labels = {
       new: 'Nowe',
@@ -139,8 +155,13 @@ function Admin() {
   return (
     <div className="admin-page">
       <div className="admin-header">
-        <h1>Panel administracyjny</h1>
-        <p>Zarządzanie zamówieniami i datami</p>
+        <div>
+          <h1>Panel administracyjny</h1>
+          <p>Zarządzanie zamówieniami i datami</p>
+        </div>
+        <button className="logout-btn" onClick={handleLogout}>
+          Wyloguj
+        </button>
       </div>
 
       {/* Tabs */}
