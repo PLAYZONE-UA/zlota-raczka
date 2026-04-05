@@ -28,9 +28,13 @@ async def create_order(
         if not validate_phone_number(phone):
             raise HTTPException(status_code=400, detail="Неправильний номер телефону")
         
-        # Перевіримо макс 2 замовлення в один день з одного номера
+        # Перевіримо макс 2 АКТИВНІ замовлення в один день з одного номера (не рахуємо completed)
         count_stmt = select(func.count()).select_from(Order).where(
-            and_(Order.phone == phone, Order.selected_date == selected_date)
+            and_(
+                Order.phone == phone, 
+                Order.selected_date == selected_date,
+                Order.status != "completed"
+            )
         )
         count_result = await db.execute(count_stmt)
         order_count = count_result.scalar()
