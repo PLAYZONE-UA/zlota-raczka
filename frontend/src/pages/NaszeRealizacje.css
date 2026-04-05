@@ -2,6 +2,8 @@
    NASZE REALIZACJE — portfolio page
    ================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300;400&family=Poppins:wght@400;500;600&display=swap');
+
 .realizacje {
   width: 100%;
   min-height: 100vh;
@@ -39,16 +41,20 @@
 }
 
 .realizacje__hero h1 {
-  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(36px, 6vw, 48px);
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  color: #111827;
 }
 
 .realizacje__hero p {
-  font-size: 1.1rem;
-  font-weight: 500;
-  opacity: 0.85;
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 300;
+  color: #666666;
+  line-height: 1.6;
 }
 
 /* ─── CONTAINER ────────────────────────────────── */
@@ -147,6 +153,7 @@
   color: #111827;
   margin-bottom: 0.5rem;
   line-height: 1.4;
+  font-family: 'Poppins', sans-serif;
 }
 
 .project-card__desc {
@@ -154,6 +161,7 @@
   color: #6b7280;
   line-height: 1.6;
   margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 .project-meta {

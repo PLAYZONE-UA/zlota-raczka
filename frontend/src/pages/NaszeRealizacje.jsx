@@ -78,8 +78,8 @@ function NaszeRealizacje() {
         <Link to="/" className="realizacje__back">
           <ArrowLeft size={24} />
         </Link>
-        <h1>Nasze Realizacje</h1>
-        <p>Zawsze pracujemy na najwyższym poziomie i z pełnym zaangażowaniem</p>
+        <h1>Zrealizowane zlecenia</h1>
+        <p>Precyzja, jakość i pełne zaangażowanie w każdym detalu.</p>
       </section>
 
       {/* ─── PROJECTS GRID ─── */}
