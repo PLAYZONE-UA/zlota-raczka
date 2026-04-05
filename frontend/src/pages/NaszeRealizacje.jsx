@@ -56,7 +56,6 @@ const projects = [
 ]
 
 function NaszeRealizacje() {
-  const [expandedId, setExpandedId] = useState(null)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxImage, setLightboxImage] = useState(null)
 
@@ -122,21 +121,9 @@ function NaszeRealizacje() {
               <div className="project-card__content">
                 <h3>{project.title}</h3>
                 <p className="project-card__desc">{project.desc}</p>
-                
-                <button
-                  className="project-card__btn"
-                  onClick={() => setExpandedId(expandedId === project.id ? null : project.id)}
-                >
-                  {expandedId === project.id ? 'Ukryj szczegóły' : 'Pokaż szczegóły'}
-                </button>
-
-                {expandedId === project.id && (
-                  <div className="project-card__details">
-                    <div className="project-meta">
-                      <span className="project-meta__time">⏱ Czas: {project.time}</span>
-                    </div>
-                  </div>
-                )}
+                <div className="project-meta">
+                  <span className="project-meta__time">⏱ Czas: {project.time}</span>
+                </div>
               </div>
             </div>
           ))}
