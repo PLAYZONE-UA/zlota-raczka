@@ -7,7 +7,7 @@ import './Header.css'
 function Header() {
   const { openModal } = useContext(OrderModalContext)
   const [isAdmin, setIsAdmin] = useState(false)
-  const [showRealizacje, setShowRealizacje] = useState(true)
+  const [showHeaderElements, setShowHeaderElements] = useState(true)
 
   useEffect(() => {
     // Перевіряємо чи користувач увійшов
@@ -17,8 +17,8 @@ function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Приховуємо кнопку Realizacje при scroll
-      setShowRealizacje(window.scrollY === 0)
+      // Приховуємо brand, order button, realizacje при scroll
+      setShowHeaderElements(window.scrollY === 0)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -35,11 +35,15 @@ function Header() {
     <header className="header">
       <div className="header__inner">
         <div className="header__content">
-          <Link to="/" className="header__brand">Złota Rączka – Twój „mąż na godzinę"</Link>
+          {showHeaderElements && (
+            <Link to="/" className="header__brand">Złota Rączka – Twój „mąż na godzinę"</Link>
+          )}
           <div className="header__buttons">
-            <button onClick={openModal} className="header__order-btn">Zamów usługę</button>
+            {showHeaderElements && (
+              <button onClick={openModal} className="header__order-btn">Zamów usługę</button>
+            )}
             <a href="tel:+48574621560" className="header__call-btn">Zadzwoń teraz</a>
-            {showRealizacje && (
+            {showHeaderElements && (
               <Link to="/realizacje" className="header__realizacje-btn">Realizacje</Link>
             )}
           </div>

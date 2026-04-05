@@ -90,24 +90,26 @@
   transform: translateY(-1px);
 }
 
-/* 🎨 Realizacje button — Blue-violet gradient */
+/* 🎨 Realizacje button — Cream with dark text */
 .header__realizacje-btn {
-  background: linear-gradient(135deg, #3B82F6, #7F5A83);
-  color: #fff;
+  background: #FFF8F0;
+  color: #1a3d2e;
   padding: 0.7rem 1.4rem;
   border-radius: 999px;
   font-size: 1rem;
   font-weight: 600;
-  border: none;
+  border: 1px solid rgba(106, 142, 114, 0.2);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(123, 90, 131, 0.25);
+  box-shadow: 0 2px 8px rgba(106, 142, 114, 0.15);
 }
 
 .header__realizacje-btn:hover {
+  background: #F4E1D2;
+  border-color: rgba(106, 142, 114, 0.4);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(123, 90, 131, 0.35);
+  box-shadow: 0 4px 14px rgba(106, 142, 114, 0.25);
 }
 
 /* 🧊 Secondary */
