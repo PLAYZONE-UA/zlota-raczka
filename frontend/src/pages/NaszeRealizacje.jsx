@@ -45,6 +45,13 @@ const projects = [
     desc: 'Umywalka łazienkowa zamontowana precyzyjnie, z uwzględnieniem trudności przy dopasowywaniu. Praca wykonana starannie, z dbałością o szczelność i estetykę, zapewniając wygodę i trwałość użytkowania.',
     time: '6 godzin',
     images: ['/images/project6-bathroom-1.jpg', '/images/project6-bathroom-2.jpg', '/images/project6-bathroom-3.jpg', '/images/project6-bathroom-4.jpg']
+  },
+  {
+    id: 7,
+    title: 'Montaż listwy przypodłogowej',
+    desc: 'Zamontowałem listwę przypodłogową na krótkim odcinku 1,5 m. Niewielkie prace też nie stanowią dla nas problemu – wszystko wykonane dokładnie i estetycznie, aby efekt był trwały i ładnie wyglądał w pomieszczeniu.',
+    time: '1,5 godziny',
+    image: '/images/project7-baseboard-small.jpg'
   }
 ]
 
