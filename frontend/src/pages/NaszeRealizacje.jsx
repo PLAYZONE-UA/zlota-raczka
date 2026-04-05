@@ -37,7 +37,15 @@ const projects = [
     title: 'Montaż zlewu kuchennego',
     desc: 'Nowy zlew kuchenny zamontowany precyzyjnie i solidnie, z dbałością o szczelność i wygodę użytkowania. Gotowy do codziennej pracy, zapewnia komfort podczas gotowania i mycia naczyń.',
     time: '2 godziny',
-    image: '/images/project5-sink.jpg'  }
+    image: '/images/project5-sink.jpg'
+  },
+  {
+    id: 6,
+    title: 'Montaż umywalki łazienkowej',
+    desc: 'Umywalka łazienkowa zamontowana precyzyjnie, z uwzględnieniem trudności przy dopasowywaniu. Praca wykonana starannie, z dbałością o szczelność i estetykę, zapewniając wygodę i trwałość użytkowania.',
+    time: '6 godzin',
+    images: ['/images/project6-bathroom-1.jpg', '/images/project6-bathroom-2.jpg', '/images/project6-bathroom-3.jpg', '/images/project6-bathroom-4.jpg']
+  }
 ]
 
 function NaszeRealizacje() {
