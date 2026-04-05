@@ -90,9 +90,9 @@
   transform: translateY(-1px);
 }
 
-/* 🎨 Realizacje button — Cream with dark text */
+/* 🎨 Realizacje button — Peach */
 .header__realizacje-btn {
-  background: #FFF8F0;
+  background: #F4E1D2;
   color: #1a3d2e;
   padding: 0.7rem 1.4rem;
   border-radius: 999px;
@@ -106,7 +106,7 @@
 }
 
 .header__realizacje-btn:hover {
-  background: #F4E1D2;
+  background: #E8CCBE;
   border-color: rgba(106, 142, 114, 0.4);
   transform: translateY(-1px);
   box-shadow: 0 4px 14px rgba(106, 142, 114, 0.25);
