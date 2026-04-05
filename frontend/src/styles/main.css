@@ -1,3 +1,4 @@
+/* ─── RESET ─── */
 * {
   margin: 0;
   padding: 0;
@@ -5,18 +6,18 @@
 }
 
 :root {
-  --bg-base: #ffffff;
+  --bg-base: #f9fafb;
   --bg-card: #ffffff;
-  --bg-card-hover: #f9fafb;
+  --bg-card-hover: #f1f5f9;
   --border: #e5e7eb;
   --border-hover: #111827;
-
+  
   --accent: #111827;
-  --accent-dim: rgba(17, 24, 39, 0.08);
-  --accent-glow: rgba(17, 24, 39, 0.15);
+  --accent-dim: rgba(17,24,39,0.08);
+  --accent-glow: rgba(17,24,39,0.15);
 
   --text-primary: #111827;
-  --text-secondary: #6b7280;
+  --text-secondary: #4b5563;
   --text-muted: #9ca3af;
 
   --success-color: #10b981;
@@ -26,19 +27,13 @@
 
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
-  --radius: 12px;
-  --radius-sm: 8px;
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.08);
-
-  /* compat aliases — Order / Admin */
-  --bg-light: #f9fafb;
-  --border-color: #e5e7eb;
-  --text-color: #111827;
-  --text-light: #6b7280;
-  --shadow: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow-card: 0 8px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
 }
 
+/* ─── GLOBAL ─── */
 html { scroll-behavior: smooth; }
 
 body {
@@ -51,7 +46,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── Layout ─── */
+/* ─── LAYOUT ─── */
 .app {
   min-height: 100vh;
   display: flex;
@@ -69,11 +64,11 @@ body {
   padding: 0 24px;
 }
 
-/* ─── Buttons ─── */
+/* ─── BUTTONS ─── */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 14px 28px;
   border: none;
   border-radius: var(--radius-sm);
@@ -81,18 +76,20 @@ body {
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(.16,1,.3,1);
   text-decoration: none;
   letter-spacing: 0.01em;
 }
 
 .btn-primary {
-  background: #111827;
-  color: #ffffff;
+  background: linear-gradient(135deg, #3A86FF, #6366F1);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(58,134,255,0.3);
 }
+
 .btn-primary:hover {
-  background: #374151;
-  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(58,134,255,0.35);
 }
 
 .btn-secondary {
@@ -100,12 +97,15 @@ body {
   color: var(--text-primary);
   border: 1px solid var(--border);
 }
+
 .btn-secondary:hover {
   border-color: var(--border-hover);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-card);
 }
 
 .btn:disabled {
-  opacity: 0.4;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -114,7 +114,7 @@ body {
   font-size: 17px;
 }
 
-/* ─── Forms ─── */
+/* ─── FORMS ─── */
 .form-group { margin-bottom: 24px; }
 
 .form-label {
@@ -137,8 +137,8 @@ body {
   font-family: var(--font-body);
   font-size: 15px;
   color: var(--text-primary);
-  background: #fff;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  background: var(--bg-card);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .form-input::placeholder,
@@ -157,17 +157,12 @@ body {
 .form-input.input-error,
 .form-textarea.input-error {
   border-color: var(--danger-color);
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.2);
 }
 
-.form-textarea {
-  resize: vertical;
-  min-height: 120px;
-}
+.form-textarea { resize: vertical; min-height: 140px; }
 
-.form-select {
-  appearance: none;
-  cursor: pointer;
-}
+.form-select { appearance: none; cursor: pointer; }
 
 .error-message {
   color: var(--danger-color);
@@ -175,16 +170,23 @@ body {
   margin-top: 6px;
 }
 
-/* ─── Card ─── */
+/* ─── CARD ─── */
 .card {
-  background: #fff;
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* ─── Spinner ─── */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ─── SPINNER ─── */
 .loading {
   display: flex;
   justify-content: center;
@@ -197,11 +199,10 @@ body {
 .spinner {
   width: 32px;
   height: 32px;
-  border: 2.5px solid var(--border);
+  border: 3px solid var(--border);
   border-top-color: var(--accent);
   border-radius: 50%;
   animation: spin 0.65s linear infinite;
-  display: inline-block;
   flex-shrink: 0;
 }
 
@@ -209,7 +210,7 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* ─── Responsive ─── */
+/* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .container { padding: 0 16px; }
   .btn { padding: 12px 24px; font-size: 14px; }
