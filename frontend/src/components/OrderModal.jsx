@@ -73,6 +73,7 @@ function OrderModal() {
       formDataObj.append('address', formData.address)
       const description = `Imię: ${formData.name}\nUsługa: ${formData.service}\nDodatkowo: ${formData.notes || ''}`
       formDataObj.append('description', description)
+      formDataObj.append('selected_date', new Date().toISOString().split('T')[0])
       
       formData.photos.forEach((photo) => {
         formDataObj.append('files', photo)
