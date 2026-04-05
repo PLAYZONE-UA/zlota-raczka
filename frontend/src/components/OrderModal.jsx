@@ -29,8 +29,6 @@ function OrderModal() {
     name: '',
     phone: '',
     address: '',
-    date: '',
-    time: '',
     service: '',
     notes: '',
     photos: []
@@ -66,9 +64,6 @@ function OrderModal() {
       if (!formData.address || formData.address.length < 5) {
         throw new Error('Podaj prawidłowy adres')
       }
-      if (!formData.date) {
-        throw new Error('Wybierz datę')
-      }
       if (!formData.service) {
         throw new Error('Wybierz usługę')
       }
@@ -76,10 +71,8 @@ function OrderModal() {
       const formDataObj = new FormData()
       formDataObj.append('phone', '+48' + formData.phone)
       formDataObj.append('address', formData.address)
-      const dateTime = formData.date && formData.time ? `${formData.date}T${formData.time}` : formData.date
       const description = `Imię: ${formData.name}\nUsługa: ${formData.service}\nDodatkowo: ${formData.notes || ''}`
       formDataObj.append('description', description)
-      formDataObj.append('selected_date', dateTime)
       
       formData.photos.forEach((photo) => {
         formDataObj.append('files', photo)
@@ -106,8 +99,6 @@ function OrderModal() {
         name: '',
         phone: '',
         address: '',
-        date: '',
-        time: '',
         service: '',
         notes: '',
         photos: []
@@ -206,27 +197,6 @@ function OrderModal() {
               <option value="Poprawki po remoncie">Poprawki po remoncie</option>
               <option value="Inne">Inne</option>
             </select>
-            <div className="row">
-              <div>
-                <label> Data</label>
-                <input
-                  type="date"
-                  name="date"
-                  value={formData.date}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div>
-                <label> Godzina (opcjonalnie)</label>
-                <input
-                  type="time"
-                  name="time"
-                  value={formData.time}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
 
             <label> Dodaj zdjęcie (opcjonalnie)</label>
             <input
