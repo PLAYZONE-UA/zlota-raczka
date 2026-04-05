@@ -183,7 +183,7 @@ async def delete_order(order_id: int, db: AsyncSession = Depends(get_db)):
         # Delete files (non-critical)
         if order.photos:
             try:
-                await delete_multiple_files(order.photos)
+                delete_multiple_files(order.photos)
             except Exception as file_err:
                 print(f"File deletion error (non-critical): {file_err}")
         
