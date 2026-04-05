@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { ordersApi, datesApi } from '../services/api'
+import { ordersApi } from '../services/api'
 import './Admin.css'
 import { Trash2 } from 'lucide-react'
 
@@ -12,8 +12,6 @@ function Admin() {
   const [filterStatus, setFilterStatus] = useState('all')
   const [selectedOrder, setSelectedOrder] = useState(null)
   const [activeTab, setActiveTab] = useState('orders')
-  const [dates, setDates] = useState([])
-  const [newDateInput, setNewDateInput] = useState('')
 
   useEffect(() => {
     // Перевірка автентифікації
@@ -25,7 +23,6 @@ function Admin() {
     }
     
     fetchOrders()
-    fetchDates()
   }, [])
 
   const fetchOrders = async () => {
@@ -41,15 +38,7 @@ function Admin() {
     }
   }
 
-  const fetchDates = async () => {
-    try {
-      const response = await datesApi.getAll()
-      setDates(Array.isArray(response.data) ? response.data : [])
-    } catch (error) {
-      console.error('Error fetching dates:', error)
-      toast.error('Nie udało się załadować daty')
-    }
-  }
+
 
   const handleStatusChange = async (orderId, newStatus) => {
     try {
@@ -79,37 +68,7 @@ function Admin() {
     }
   }
 
-  const handleAddDate = async () => {
-    if (!newDateInput.trim()) {
-      toast.error('Proszę podać datę')
-      return
-    }
 
-    try {
-      const response = await datesApi.create({ date: newDateInput })
-      toast.success('Data została dodana')
-      setNewDateInput('')
-      setDates([...dates, response.data])
-    } catch (error) {
-      console.error('Error adding date:', error)
-      toast.error('Nie udało się dodać datę')
-    }
-  }
-
-  const handleDeleteDate = async (dateId) => {
-    if (!window.confirm('Czy na pewno chcesz usunąć tę datę?')) {
-      return
-    }
-
-    try {
-      await datesApi.delete(dateId)
-      toast.success('Data została usunięta')
-      setDates(dates.filter(d => d.id !== dateId))
-    } catch (error) {
-      console.error('Error deleting date:', error)
-      toast.error('Nie udało się usunąć datę')
-    }
-  }
 
   const getStatusColor = (status) => {
     const colors = {
@@ -157,28 +116,14 @@ function Admin() {
       <div className="admin-header">
         <div>
           <h1>Panel administracyjny</h1>
-          <p>Zarządzanie zamówieniami i datami</p>
+          <p>Zarządzanie zamówieniami</p>
         </div>
         <button className="logout-btn" onClick={handleLogout}>
           Wyloguj
         </button>
       </div>
 
-      {/* Tabs */}
-      <div className="admin-tabs">
-        <button
-          className={`tab-btn ${activeTab === 'orders' ? 'active' : ''}`}
-          onClick={() => setActiveTab('orders')}
-        >
-          📋 Zamówienia ({orders.length})
-        </button>
-        <button
-          className={`tab-btn ${activeTab === 'dates' ? 'active' : ''}`}
-          onClick={() => setActiveTab('dates')}
-        >
-          📅 Dostępne daty ({dates.length})
-        </button>
-      </div>
+
 
       <div className="admin-content">
         {/* ORDERS TAB */}
@@ -292,64 +237,7 @@ function Admin() {
           </>
         )}
 
-        {/* DATES TAB */}
-        {activeTab === 'dates' && (
-          <>
-            <div className="dates-container">
-              <div className="add-date-form">
-                <h3>Dodaj nową dostępną datę</h3>
-                <div className="form-group">
-                  <input
-                    type="date"
-                    value={newDateInput}
-                    onChange={(e) => setNewDateInput(e.target.value)}
-                    className="date-input"
-                  />
-                  <button
-                    onClick={handleAddDate}
-                    className="add-date-btn"
-                  >
-                    Dodaj datę
-                  </button>
-                </div>
-              </div>
 
-              <div className="dates-list">
-                <h3>Dostępne daty</h3>
-                {dates.length === 0 ? (
-                  <p className="no-dates">Brak dostępnych dat</p>
-                ) : (
-                  <div className="dates-grid">
-                    {dates.map(date => (
-                      <div key={date.id} className="date-card">
-                        <div className="date-display">
-                          <span className="date-text">
-                            {new Date(date.date).toLocaleDateString('pl-PL', {
-                              weekday: 'long',
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric'
-                            })}
-                          </span>
-                          {date.is_booked && (
-                            <span className="date-status booked">Zarezerwowana</span>
-                          )}
-                        </div>
-                        <button
-                          onClick={() => handleDeleteDate(date.id)}
-                          className="delete-date-btn"
-                          title="Usuń datę"
-                        >
-                          <Trash2 size={18} /> Usuń
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </>
-        )}
       </div>
 
       {/* Photo Modal */}

@@ -18,7 +18,7 @@ async def create_order(
     phone: str = Form(...),
     address: str = Form(...),
     description: str = Form(...),
-    selected_date: str = Form(...),
+    selected_date: str = Form(None),
     files: List[UploadFile] = File(default=[]),
     db: AsyncSession = Depends(get_db)
 ):
