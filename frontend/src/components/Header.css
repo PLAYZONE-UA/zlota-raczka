@@ -104,8 +104,8 @@
 }
 
 .header__call-btn {
-  background: #22c55e;
-  color: #fff;
+  background: #D4AF37;
+  color: #111111;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-size: 1.1rem;
@@ -122,15 +122,16 @@
 }
 
 .header__call-btn:hover {
-  background: #16a34a;
+  background: #B8931E;
 }
 
 .header__call-btn:last-child {
-  background: #7f1d1d;
+  background: #0b3d91;
+  color: #fff;
 }
 
 .header__call-btn:last-child:hover {
-  background: #5f0f1c;
+  background: #082d6b;
 }
 
 .header__btn {
