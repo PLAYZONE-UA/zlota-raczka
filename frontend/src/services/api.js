@@ -10,6 +10,15 @@ const api = axios.create({
   },
 })
 
+// Add token to all requests
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('adminToken')
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
+})
+
 export const smitApi = {
   sendCode: (phone) => api.post('/sms/send', { phone }),
   verifyCode: (phone, code) => api.post('/sms/verify', { phone, code }),

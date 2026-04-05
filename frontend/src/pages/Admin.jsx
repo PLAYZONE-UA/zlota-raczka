@@ -64,6 +64,7 @@ function Admin() {
       setOrders(orders.filter(order => order.id !== orderId))
     } catch (error) {
       console.error('Error deleting order:', error)
+      console.error('Server response:', error.response?.data)
       toast.error('Nie udało się usunąć zamówienia')
     }
   }
