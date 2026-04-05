@@ -188,7 +188,7 @@ async def delete_order(order_id: int, db: AsyncSession = Depends(get_db)):
                 print(f"File deletion error (non-critical): {file_err}")
         
         # Delete order
-        await db.delete(order)
+        db.delete(order)
         await db.commit()
         
         return MessageResponse(message="Замовлення видалено")
