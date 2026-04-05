@@ -99,6 +99,20 @@
   position: relative;
 }
 
+.project-card__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 220px;
+  gap: 1px;
+  background: #e5e7eb;
+}
+
+.project-card__gallery .project-card__image {
+  height: 100%;
+  margin: 0;
+  position: relative;
+}
+
 .project-card__label {
   position: absolute;
   top: 8px;

@@ -21,10 +21,10 @@ const projects = [
   },
   {
     id: 3,
-    title: 'Montaż TV na ścianie z projektorem',
-    desc: 'Zawieszenie TV, montaż soundbara i systemu projekcyjnego w salonie.',
-    time: '1 dzień',
-    image: '/images/project3.jpg'
+    title: 'Montaż listew przypodłogowych',
+    desc: 'Profesjonalny montaż listew przypodłogowych – estetycznie i stabilnie dopasowane do wnętrza. Praca wykonana starannie, z dbałością o szczegóły, gwarantując trwały i elegancki efekt.',
+    time: '12 godzin',
+    images: ['/images/project3-baseboard-1.jpg', '/images/project3-baseboard-2.jpg', '/images/project3-baseboard-3.jpg']
   }
 ]
 
@@ -61,6 +61,15 @@ function NaszeRealizacje() {
                       <span className="project-card__label">Po</span>
                     </div>
                   )}
+                </div>
+              )}
+              {project.images && (
+                <div className="project-card__gallery">
+                  {project.images.map((img, idx) => (
+                    <div key={idx} className="project-card__image">
+                      <img src={img} alt={`${project.title} - ${idx + 1}`} onError={e => { e.target.style.display = 'none' }} />
+                    </div>
+                  ))}
                 </div>
               )}
               {project.image && (
