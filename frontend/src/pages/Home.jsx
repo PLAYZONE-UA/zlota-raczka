@@ -93,7 +93,7 @@ function Home() {
       <section className="home__hero">
         <div className="home__hero-grid">
 
-          <div className={`home__hero-text ${in_ ? 'home__hero-text--in' : ''}`}>
+          <div className={`home__hero-text ${in_ ? 'home__hero-text--in' : ''}`} data-reveal="left">
             <p className="home__hero-p">
               Profesjonalne prace domowe i instalacyjne w <strong style={{ fontWeight: '700' }}>Warszawie i okolicach.</strong><br />
               Świadczymy kompleksowe usługi w domu i mieszkaniu – montaż mebli i wyposażenia, naprawy techniczne, instalacje oraz prace remontowe. Działamy szybko, rzetelnie i bez ukrytych kosztów.
@@ -112,7 +112,7 @@ function Home() {
 
           </div>
 
-          <div className={`home__hero-img ${in_ ? 'home__hero-img--in' : ''}`}>
+          <div className={`home__hero-img ${in_ ? 'home__hero-img--in' : ''}`} data-reveal="right">
             <img
               src="/images/hero-image.jpg"
               alt="Fachowiec"
@@ -125,10 +125,10 @@ function Home() {
 
       {/* ─── SERVICES ─── */}
       <section className="services">
-        <h2>Jak mogę pomóc?</h2>
+        <h2 data-reveal="up">Jak mogę pomóc?</h2>
         <div className="services-grid">
           {services.map((s, i) => (
-            <div key={i} className="service-card">
+            <div key={i} className="service-card" data-reveal="scale" data-delay={Math.min(i + 1, 5)}>
               <h3>{s.title}</h3>
               <p>{s.desc}</p>
               <ul>

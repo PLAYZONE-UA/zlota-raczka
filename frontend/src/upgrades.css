@@ -1,0 +1,319 @@
+/* ================================================
+   upgrades.css — scroll animations · BA slider · sticky CTA
+   ================================================ */
+
+/* ─── SCROLL REVEAL ANIMATIONS ──────────────────────────── */
+
+/* Fade animation */
+[data-reveal="fade"] {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="fade"].is-visible {
+  opacity: 1;
+}
+
+/* Slide up animation */
+[data-reveal="up"] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="up"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide down animation */
+[data-reveal="down"] {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="down"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide left animation */
+[data-reveal="left"] {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="left"].is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide right animation */
+[data-reveal="right"] {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="right"].is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale animation */
+[data-reveal="scale"] {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="scale"].is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delay helper */
+[data-delay="1"] { transition-delay: 0.1s; }
+[data-delay="2"] { transition-delay: 0.2s; }
+[data-delay="3"] { transition-delay: 0.3s; }
+[data-delay="4"] { transition-delay: 0.4s; }
+[data-delay="5"] { transition-delay: 0.5s; }
+
+/* ─── BEFORE/AFTER SLIDER ──────────────────────────────── */
+
+.ba-slider {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  cursor: ew-resize;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.ba-slider__after {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ba-slider__before-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+  transition: width 0.05s ease-out;
+}
+
+.ba-slider__before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ba-slider__line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 3;
+  transform: translateX(-50%);
+  transition: left 0.05s ease-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.ba-slider__handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #3A86FF, #6366F1);
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(58, 134, 255, 0.4);
+  transition: left 0.05s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+}
+
+.ba-slider__handle::before,
+.ba-slider__handle::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background: white;
+}
+
+.ba-slider__handle::before {
+  left: 16px;
+}
+
+.ba-slider__handle::after {
+  right: 16px;
+}
+
+.ba-slider__handle:active {
+  cursor: grabbing;
+}
+
+.ba-slider__label {
+  position: absolute;
+  top: 15px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.ba-slider__label--before {
+  left: 15px;
+}
+
+.ba-slider__label--after {
+  right: 15px;
+}
+
+/* ─── STICKY CTA ────────────────────────────────────────── */
+
+.sticky-cta {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.9);
+  transition: opacity 0.4s ease, 
+              visibility 0.4s ease,
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sticky-cta--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.sticky-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #3A86FF, #6366F1);
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(58, 134, 255, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sticky-cta__btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(58, 134, 255, 0.45);
+}
+
+.sticky-cta__btn:active {
+  transform: translateY(-2px);
+}
+
+.sticky-cta__dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .ba-slider__handle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .ba-slider__handle::before,
+  .ba-slider__handle::after {
+    height: 16px;
+  }
+
+  .sticky-cta {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .sticky-cta__btn {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ba-slider {
+    border-radius: 8px;
+  }
+
+  .ba-slider__label {
+    font-size: 0.8rem;
+    top: 10px;
+  }
+
+  .ba-slider__label--before {
+    left: 10px;
+  }
+
+  .ba-slider__label--after {
+    right: 10px;
+  }
+
+  .sticky-cta {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .sticky-cta__btn {
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
+
+  .sticky-cta__dot {
+    width: 6px;
+    height: 6px;
+  }
+}
