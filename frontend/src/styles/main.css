@@ -1,13 +1,13 @@
 /* ================================================
    GLOBAL — Premium Minimalist · Light + Dark
    
-   🎨 SOFT LUXURY PALETTE (Пастельний преміум)
-   Палітра: Кремово-персиково-лілова
-   - #FFF8F0 (кремовий фон)
-   - #F4E1D2 (персиковий потрібен)
-   - #CBAACB (лілово-пастельний бордер)
-   - #7F5A83 (витончений фіолетовий акцент)
-   Відчуття: м'якість, елегантність, жіночність
+   � MODERN NATURE PALETTE (Лісна надихненість)
+   Палітра: М'ятно-зелена
+   - #EDF6F2 (світлий м'ятний фон)
+   - #C8E3D4 (м'ятний потрібен)
+   - #6A8E72 (глибокий зелений)
+   - #2E4D3C (темний зелений акцент)
+   Відчуття: спокій, довіра, природність
    
    Шрифти: підключи в <head> перед цим файлом:
    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,35 +73,35 @@
 [data-theme="light"] {
   color-scheme: light;
 
-  --bg-base:        #FFF8F0;
-  --bg-subtle:      #FBF4ED;
-  --bg-muted:       #F4E1D2;
+  --bg-base:        #EDF6F2;
+  --bg-subtle:      #F2F9F6;
+  --bg-muted:       #C8E3D4;
   --bg-card:        #ffffff;
-  --bg-overlay:     rgba(255,248,240,.88);
+  --bg-overlay:     rgba(237,246,242,.88);
 
-  --border:         rgba(203,170,203,.25);
-  --border-strong:  rgba(127,90,131,.35);
-  --border-focus:   #7F5A83;
+  --border:         rgba(106,142,114,.25);
+  --border-strong:  rgba(46,77,60,.35);
+  --border-focus:   #2E4D3C;
 
-  --text-primary:   #3d2d42;
-  --text-secondary: #5a4a5f;
-  --text-muted:     #8a7a8f;
-  --text-disabled:  #b8a8bd;
+  --text-primary:   #1a3d2e;
+  --text-secondary: #3d5647;
+  --text-muted:     #6a8e72;
+  --text-disabled:  #a8c4b5;
   --text-inverse:   #ffffff;
 
-  --accent:         #7F5A83;
-  --accent-hover:   #6b4973;
-  --accent-dim:     rgba(127,90,131,.08);
-  --accent-ring:    rgba(127,90,131,.18);
+  --accent:         #2E4D3C;
+  --accent-hover:   #1f3728;
+  --accent-dim:     rgba(46,77,60,.08);
+  --accent-ring:    rgba(46,77,60,.18);
 
-  --blue-color:     #7F5A83;
-  --blue-dim:       rgba(127,90,131,.10);
-  --success-color:  #8b6f47;
-  --success-dim:    rgba(139,111,71,.08);
-  --danger-color:   #c17a7a;
-  --danger-dim:     rgba(193,122,122,.08);
-  --warning-color:  #c4a97a;
-  --warning-dim:    rgba(196,169,122,.08);
+  --blue-color:     #2E4D3C;
+  --blue-dim:       rgba(46,77,60,.10);
+  --success-color:  #6A8E72;
+  --success-dim:    rgba(106,142,114,.08);
+  --danger-color:   #8b5a5a;
+  --danger-dim:     rgba(139,90,90,.08);
+  --warning-color:  #b89968;
+  --warning-dim:    rgba(184,153,104,.08);
 
   --input-bg:       #ffffff;
 }
@@ -111,37 +111,37 @@
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --bg-base:        #2a2030;
-  --bg-subtle:      #332839;
-  --bg-muted:       #3d3343;
-  --bg-card:        #3a3040;
-  --bg-overlay:     rgba(42,32,48,.92);
+  --bg-base:        #1a3d2e;
+  --bg-subtle:      #224638;
+  --bg-muted:       #2a5242;
+  --bg-card:        #27494d;
+  --bg-overlay:     rgba(26,61,46,.92);
 
-  --border:         rgba(203,170,203,.18);
-  --border-strong:  rgba(203,170,203,.28);
-  --border-focus:   #C9A8D8;
+  --border:         rgba(200,227,212,.15);
+  --border-strong:  rgba(200,227,212,.25);
+  --border-focus:   #A8D4C5;
 
-  --text-primary:   #F5E8E0;
-  --text-secondary: #D4BFB8;
-  --text-muted:     #A89FA0;
-  --text-disabled:  #6E5F6A;
-  --text-inverse:   #2a2030;
+  --text-primary:   #E8F4F0;
+  --text-secondary: #C8DFD7;
+  --text-muted:     #8FA89F;
+  --text-disabled:  #5A6F68;
+  --text-inverse:   #1a3d2e;
 
-  --accent:         #D4A5D6;
-  --accent-hover:   #e5b8e8;
-  --accent-dim:     rgba(212,165,214,.12);
-  --accent-ring:    rgba(212,165,214,.25);
+  --accent:         #A8D4C5;
+  --accent-hover:   #C8E3D4;
+  --accent-dim:     rgba(168,212,197,.12);
+  --accent-ring:    rgba(168,212,197,.25);
 
-  --blue-color:     #D4A5D6;
-  --blue-dim:       rgba(212,165,214,.15);
-  --success-color:  #C4A97A;
-  --success-dim:    rgba(196,169,122,.12);
-  --danger-color:   #E8A4A4;
-  --danger-dim:     rgba(232,164,164,.12);
-  --warning-color:  #E5C99E;
-  --warning-dim:    rgba(229,201,158,.12);
+  --blue-color:     #A8D4C5;
+  --blue-dim:       rgba(168,212,197,.15);
+  --success-color:  #9FBE9E;
+  --success-dim:    rgba(159,190,158,.12);
+  --danger-color:   #D48b7b;
+  --danger-dim:     rgba(212,139,123,.12);
+  --warning-color:  #D4B888;
+  --warning-dim:    rgba(212,184,136,.12);
 
-  --input-bg:       #3a3040;
+  --input-bg:       #2a5242;
 
   --shadow-xs: 0 1px 2px rgba(0,0,0,.4);
   --shadow-sm: 0 1px 4px rgba(0,0,0,.5), 0 1px 2px rgba(0,0,0,.3);
