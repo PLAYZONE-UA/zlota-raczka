@@ -185,7 +185,7 @@ async def delete_order(order_id: int, db: AsyncSession = Depends(get_db)):
             await delete_multiple_files(order.photos)
         
         # Delete order
-        await db.delete(order)
+        db.delete(order)
         await db.commit()
         
         return MessageResponse(message="Замовлення видалено")
