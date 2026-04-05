@@ -270,8 +270,10 @@ async def save_multiple_files(files: List[UploadFile], max_files: int = 5) -> di
     return await file_service.save_multiple_files(files, max_files)
 
 
-def delete_multiple_files(filepaths: List[str]) -> dict:
-    """Wrapper for deleting multiple files"""
+def delete_multiple_files(filenames: List[str]) -> dict:
+    """Wrapper for deleting multiple files by filename (builds full paths automatically)"""
+    # Convert filenames to full paths in photos directory
+    filepaths = [os.path.join(file_service.photos_dir, filename) for filename in filenames]
     return file_service.delete_multiple_files(filepaths)
 
 
