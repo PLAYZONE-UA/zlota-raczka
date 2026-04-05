@@ -25,6 +25,13 @@ const projects = [
     desc: 'Profesjonalny montaż listew przypodłogowych – estetycznie i stabilnie dopasowane do wnętrza. Praca wykonana starannie, z dbałością o szczegóły, gwarantując trwały i elegancki efekt.',
     time: '12 godzin',
     images: ['/images/project3-baseboard-1.jpg', '/images/project3-baseboard-2.jpg', '/images/project3-baseboard-3.jpg']
+  },
+  {
+    id: 4,
+    title: 'Montaż siatki na balkon',
+    desc: 'Profesjonalny montaż siatki na balkon, skutecznie chroniącej przed gołębiami. Siatka zamontowana starannie i bezpiecznie, estetycznie dopasowana do balkonu, zapewniając spokój i czystość w przestrzeni.',
+    time: '3 godziny',
+    image: '/images/project4-balcony.jpg'
   }
 ]
 
