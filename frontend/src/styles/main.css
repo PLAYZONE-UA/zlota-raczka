@@ -349,6 +349,32 @@ a:hover { text-decoration-color: var(--text-primary); }
   pointer-events: none;
 }
 
+/* Glow — Animated gradient */
+.btn-glow {
+  background: linear-gradient(90deg, #588157 0%, #A3B18A 50%, #C8E3D4 100%);
+  color: #fff;
+  background-size: 200% 100%;
+  border: 1.5px solid transparent;
+  transition:
+    transform var(--duration-fast),
+    box-shadow var(--duration-base) var(--ease-out);
+  animation: gradientShift 4s ease infinite;
+}
+
+.btn-glow:hover {
+  transform: scale(1.06);
+  box-shadow: 0 12px 28px rgba(88,129,87,0.45);
+}
+
+.btn-glow:active {
+  transform: scale(0.97);
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
 /* ─── ФОРМИ ──────────────────────────────────── */
 
 .form-group { margin-bottom: 20px; }
