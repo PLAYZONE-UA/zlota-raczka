@@ -94,6 +94,9 @@ function Home() {
         <div className="home__hero-grid">
 
           <div className={`home__hero-text ${in_ ? 'home__hero-text--in' : ''}`} data-reveal="left">
+            <h1 className="home__hero-h1">
+              Profesjonalne usługi handymana<br />dla Warszawy i okolic
+            </h1>
             <p className="home__hero-p">
               Profesjonalne prace domowe i instalacyjne w <strong style={{ fontWeight: '700' }}>Warszawie i okolicach.</strong><br />
               Świadczymy kompleksowe usługi w domu i mieszkaniu – montaż mebli i wyposażenia, naprawy techniczne, instalacje oraz prace remontowe. Działamy szybko, rzetelnie i bez ukrytych kosztów.
@@ -109,6 +112,18 @@ function Home() {
               <li style={{ marginBottom: '8px' }}>✓ Elastyczne terminy i indywidualne podejście – dostosowujemy się do Twoich potrzeb</li>
               <li style={{ marginBottom: '8px' }}>✓ Gwarantujemy profesjonalizm, bezpieczeństwo i najwyższą jakość wykonania każdej pracy</li>
             </ul>
+
+            <div className="home__hero-btns">
+              <button 
+                className="home__btn home__btn--dark"
+                onClick={() => openModal()}
+              >
+                Zamów usługę
+              </button>
+              <a href="tel:+48123456789" className="home__btn home__btn--outline">
+                Zadzwoń teraz
+              </a>
+            </div>
 
           </div>
 
