@@ -94,8 +94,21 @@ function OrderModal() {
       console.log('Response body:', responseBody)
 
       if (!response.ok) {
-        const errorMessage = responseBody.detail || responseBody.message || JSON.stringify(responseBody) || 'Błąd przy tworzeniu zamówienia'
-        console.error('Server error:', errorMessage)
+        // FastAPI повертає detail як масив об'єктів
+        let errorMessage = 'Błąd przy tworzeniu zamówienia'
+
+        if (Array.isArray(responseBody.detail)) {
+          // Показуємо всі помилки валідації
+          errorMessage = responseBody.detail
+            .map(e => `${e.loc?.at(-1) ?? 'field'}: ${e.msg}`)
+            .join(', ')
+          console.error('Validation errors:', responseBody.detail)
+        } else if (typeof responseBody.detail === 'string') {
+          errorMessage = responseBody.detail
+        } else if (responseBody.message) {
+          errorMessage = responseBody.message
+        }
+
         throw new Error(errorMessage)
       }
 
