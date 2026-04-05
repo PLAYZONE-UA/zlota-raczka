@@ -7,11 +7,22 @@ import './Header.css'
 function Header() {
   const { openModal } = useContext(OrderModalContext)
   const [isAdmin, setIsAdmin] = useState(false)
+  const [showRealizacje, setShowRealizacje] = useState(true)
 
   useEffect(() => {
     // Перевіряємо чи користувач увійшов
     const adminToken = localStorage.getItem('adminToken')
     setIsAdmin(!!adminToken)
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Приховуємо кнопку Realizacje при scroll
+      setShowRealizacje(window.scrollY === 0)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleLogout = () => {
@@ -28,7 +39,9 @@ function Header() {
           <div className="header__buttons">
             <button onClick={openModal} className="header__order-btn">Zamów usługę</button>
             <a href="tel:+48574621560" className="header__call-btn">Zadzwoń teraz</a>
-            <Link to="/realizacje" className="header__call-btn">Realizacje</Link>
+            {showRealizacje && (
+              <Link to="/realizacje" className="header__call-btn">Realizacje</Link>
+            )}
           </div>
         </div>
         <div className="header__actions">

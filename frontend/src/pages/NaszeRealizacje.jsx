@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowLeft } from 'lucide-react'
 import './NaszeRealizacje.css'
 
 const projects = [
@@ -32,6 +34,9 @@ function NaszeRealizacje() {
     <div className="realizacje">
       {/* ─── HERO ─── */}
       <section className="realizacje__hero">
+        <Link to="/" className="realizacje__back">
+          <ArrowLeft size={24} />
+        </Link>
         <h1>Nasze Realizacje</h1>
         <p>Zawsze pracujemy na najwyższym poziomie i z pełnym zaangażowaniem</p>
       </section>

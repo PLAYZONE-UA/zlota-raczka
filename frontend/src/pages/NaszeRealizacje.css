@@ -13,6 +13,29 @@
   color: white;
   padding: 4rem 1.5rem;
   text-align: center;
+  position: relative;
+}
+
+.realizacje__back {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.realizacje__back:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateX(-4px);
 }
 
 .realizacje__hero h1 {
@@ -161,6 +184,13 @@
     padding: 2.5rem 1.5rem;
   }
 
+  .realizacje__back {
+    top: 1rem;
+    left: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+
   .realizacje__hero h1 {
     font-size: 1.8rem;
     margin-bottom: 0.3rem;
@@ -206,6 +236,18 @@
 @media (max-width: 480px) {
   .realizacje__hero {
     padding: 2rem 1rem;
+  }
+
+  .realizacje__back {
+    top: 0.8rem;
+    left: 0.8rem;
+    width: 36px;
+    height: 36px;
+  }
+
+  .realizacje__back svg {
+    width: 20px;
+    height: 20px;
   }
 
   .realizacje__hero h1 {
