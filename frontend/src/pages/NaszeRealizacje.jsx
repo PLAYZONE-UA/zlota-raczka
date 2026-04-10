@@ -53,14 +53,14 @@ const projects = [
     time: '1,5 godziny',
     image: '/images/project7-baseboard-small.jpg'
   },
-  // {
-  //   id: 8,
-  //   title: 'Malowanie placu zabaw ogrodowego',
-  //   desc: 'Drewniany plac zabaw został odświeżony poprzez staranne malowanie. Powierzchnia została odpowiednio przygotowana, a następnie pokryta farbą, co poprawiło estetykę oraz zabezpieczyło drewno przed warunkami atmosferycznymi.',
-  //   time: '3 dnie',
-  //   imageBefore: '/images/home.jpg',
-  //   imageAfter: '/images/home2.jpg'
-  // }
+  {
+    id: 8,
+    title: 'Malowanie placu zabaw ogrodowego',
+    desc: 'Drewniany plac zabaw został odświeżony poprzez staranne malowanie. Powierzchnia została odpowiednio przygotowana, a następnie pokryta farbą, co poprawiło estetykę oraz zabezpieczyło drewno przed warunkami atmosferycznymi.',
+    time: '3 dnie',
+    imageBefore: '/images/home.jpg',
+    imageAfter: '/images/home2.jpg'
+  }
 ]
 
 function NaszeRealizacje() {
