@@ -52,7 +52,15 @@ const projects = [
     desc: 'Zamontowałem listwę przypodłogową na krótkim odcinku 1,5 m. Niewielkie prace też nie stanowią dla nas problemu – wszystko wykonane dokładnie i estetycznie, aby efekt był trwały i ładnie wyglądał w pomieszczeniu.',
     time: '1,5 godziny',
     image: '/images/project7-baseboard-small.jpg'
-  }
+  },
+  // {
+  //   id: 8,
+  //   title: 'Malowanie placu zabaw ogrodowego',
+  //   desc: 'Drewniany plac zabaw został odświeżony poprzez staranne malowanie. Powierzchnia została odpowiednio przygotowana, a następnie pokryta farbą, co poprawiło estetykę oraz zabezpieczyło drewno przed warunkami atmosferycznymi.',
+  //   time: '3 dnie',
+  //   imageBefore: '/images/home.jpg',
+  //   imageAfter: '/images/home2.jpg'
+  // }
 ]
 
 function NaszeRealizacje() {
