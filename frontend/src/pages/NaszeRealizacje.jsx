@@ -60,6 +60,13 @@ const projects = [
     time: '3 dnie',
     imageBefore: '/images/home.jpg',
     imageAfter: '/images/home2.jpg'
+  },
+  {
+    id: 9,
+    title: 'Montaż płyt warstwowych na dachu',
+    desc: 'Profesjonalny montaż płyt warstwowych na dachu – precyzyjnie dopasowane i zabezpieczone. Praca wymagająca dokładności i doświadczenia, wykonana z pełnym zaangażowaniem w każdym detalu, zapewniając trwałość, szczelność i estetykę dachu.',
+    time: 'Zależy od zlecenia',
+    images: ['/images/project9-detail-1.jpg', '/images/project9-detail-2.jpg']
   }
 ]
 
