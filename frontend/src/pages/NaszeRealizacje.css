@@ -17,6 +17,81 @@ body.night-showcase .realizacje {
   color: #0e0e10;
 }
 
+body.night-home .realizacje {
+  background:
+    radial-gradient(circle at top right, rgba(255, 138, 61, 0.12), transparent 32%),
+    radial-gradient(circle at top left, rgba(255, 61, 61, 0.08), transparent 28%),
+    linear-gradient(180deg, #0e0e10 0%, #111114 42%, #0e0e10 100%);
+  color: #f5f3ee;
+}
+
+body.night-home .realizacje__hero {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 138, 61, 0.12), transparent 56%),
+    linear-gradient(180deg, #0e0e10 0%, #111114 100%);
+  color: #f5f3ee;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.night-home .realizacje__back {
+  background: linear-gradient(135deg, #ff8a3d, #ff3d3d);
+  color: #0e0e10;
+  box-shadow: 0 10px 24px rgba(255, 138, 61, 0.24);
+  opacity: 1;
+}
+
+body.night-home .realizacje__back:hover {
+  background: linear-gradient(135deg, #ff9b54, #ff5b5b);
+  box-shadow: 0 14px 28px rgba(255, 138, 61, 0.32);
+}
+
+body.night-home .realizacje__hero h1 {
+  color: #f5f3ee;
+}
+
+body.night-home .realizacje__hero p {
+  color: #d6d2cb;
+}
+
+body.night-home .project-card {
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.night-home .project-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.night-home .project-card__image,
+body.night-home .project-card__images,
+body.night-home .project-card__gallery {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+body.night-home .project-card__label {
+  background: rgba(255, 138, 61, 0.95);
+  color: #0e0e10;
+}
+
+body.night-home .project-card__content h3 {
+  color: #f5f3ee;
+}
+
+body.night-home .project-card__desc {
+  color: #d6d2cb;
+}
+
+body.night-home .project-meta__time {
+  color: #f5f3ee;
+  background: rgba(255, 138, 61, 0.12);
+  border: 1px solid rgba(255, 138, 61, 0.18);
+}
+
+body.night-home .lightbox {
+  background: rgba(14, 14, 16, 0.9);
+}
+
 /* ─── HERO SECTION ─────────────────────────────── */
 .realizacje__hero {
   background: linear-gradient(180deg, #f9f9fb 0%, #ffffff 100%);

@@ -75,10 +75,10 @@ function NaszeRealizacje() {
   const [lightboxImage, setLightboxImage] = useState(null)
 
   useEffect(() => {
-    document.body.classList.add('night-showcase')
+    document.body.classList.add('night-home')
 
     return () => {
-      document.body.classList.remove('night-showcase')
+      document.body.classList.remove('night-home')
       document.body.style.overflow = ''
     }
   }, [])
