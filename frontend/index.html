@@ -371,10 +371,13 @@
         }
 
         const minVisibleMs = 3000;
+        const finalSlowFrom = 96;
+        const finishHoldMs = 240;
         const startedAt = performance.now();
         let progress = 0;
         let targetProgress = 0;
         let isLoaded = false;
+        let isFinishing = false;
 
         document.body.classList.add('is-loading');
 
@@ -401,23 +404,27 @@
 
         const tick = () => {
           const minDurationPassed = performance.now() - startedAt >= minVisibleMs;
+          const canFinalize = isLoaded && minDurationPassed;
 
-          if (!isLoaded || !minDurationPassed) {
+          if (!canFinalize) {
             targetProgress = Math.min(93, targetProgress + Math.random() * 1.3 + 0.45);
+          } else if (progress < finalSlowFrom) {
+            targetProgress = 99.2;
           } else {
             targetProgress = 100;
           }
 
-          progress += (targetProgress - progress) * 0.1;
-
-          if (isLoaded && minDurationPassed && 100 - progress < 0.35) {
-            progress = 100;
-          }
+          const easing = canFinalize && progress >= finalSlowFrom ? 0.028 : 0.1;
+          progress += (targetProgress - progress) * easing;
 
           updateVisual(progress);
 
-          if (progress >= 100 && isLoaded && minDurationPassed) {
-            finishLoader();
+          if (canFinalize && progress >= 99.98) {
+            updateVisual(100);
+            if (!isFinishing) {
+              isFinishing = true;
+              window.setTimeout(finishLoader, finishHoldMs);
+            }
             return;
           }
 
