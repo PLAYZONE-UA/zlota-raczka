@@ -6,9 +6,245 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="google0fdfed3166a281f8" />
     <title>Złota ręczka - Usługi Handymana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --loader-bg: #0a0a0b;
+        --loader-gold: #cfa35a;
+        --loader-paper: #f2f0ec;
+        --loader-muted: #6a6a6f;
+      }
+
+      body.is-loading {
+        overflow: hidden;
+      }
+
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: var(--loader-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.8s cubic-bezier(0.6, 0, 0.2, 1), filter 0.8s ease;
+      }
+
+      #loader.hide {
+        opacity: 0;
+        filter: blur(6px);
+        pointer-events: none;
+      }
+
+      #loader::before {
+        content: '';
+        position: absolute;
+        width: 560px;
+        height: 560px;
+        background: radial-gradient(circle, rgba(207, 163, 90, 0.1) 0%, rgba(207, 163, 90, 0) 70%);
+        pointer-events: none;
+      }
+
+      .ring-wrap {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin-bottom: 40px;
+      }
+
+      .ring-wrap svg {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+
+      .ring-bg {
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.06);
+        stroke-width: 1.5;
+      }
+
+      .ring-fg {
+        fill: none;
+        stroke: var(--loader-gold);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 0.2s linear;
+      }
+
+      .ring-center {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ring-pct {
+        font-family: 'Sora', sans-serif;
+        font-size: 15px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        color: var(--loader-paper);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .wordmark {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 10px;
+      }
+
+      .wordmark span {
+        font-family: 'Sora', sans-serif;
+        font-size: clamp(20px, 4vw, 26px);
+        font-weight: 600;
+        letter-spacing: 6px;
+        color: var(--loader-paper);
+        opacity: 0;
+        transform: translateY(8px);
+        animation: loader-rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+
+      .wordmark span.accent {
+        color: var(--loader-gold);
+      }
+
+      @keyframes loader-rise {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .tagline {
+        font-family: 'Sora', sans-serif;
+        font-size: 11px;
+        font-weight: 300;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--loader-muted);
+        opacity: 0;
+        animation: loader-fade-in 1s ease forwards;
+        animation-delay: 0.9s;
+      }
+
+      @keyframes loader-fade-in {
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="loader" role="status" aria-live="polite" aria-label="Ładowanie strony">
+      <div class="ring-wrap" aria-hidden="true">
+        <svg viewBox="0 0 100 100">
+          <circle class="ring-bg" cx="50" cy="50" r="48" />
+          <circle class="ring-fg" id="ring" cx="50" cy="50" r="48" />
+        </svg>
+        <div class="ring-center">
+          <div class="ring-pct" id="pct">0%</div>
+        </div>
+      </div>
+
+      <div class="wordmark" aria-label="Złota Rączka">
+        <span style="animation-delay: 0.1s">ZŁOTA</span>
+        <span class="accent" style="animation-delay: 0.25s">RĄCZKA</span>
+      </div>
+      <div class="tagline">Warszawa &amp; okolice</div>
+    </div>
+
     <div id="root"></div>
+    <script>
+      (() => {
+        const loader = document.getElementById('loader');
+        const ring = document.getElementById('ring');
+        const pct = document.getElementById('pct');
+
+        if (!loader || !ring || !pct) {
+          return;
+        }
+
+        const radius = 48;
+        const circumference = 2 * Math.PI * radius;
+        let progress = 0;
+        let targetProgress = 0;
+        let isLoaded = false;
+        let rafId = null;
+
+        document.body.classList.add('is-loading');
+        ring.style.strokeDasharray = `${circumference}`;
+        ring.style.strokeDashoffset = `${circumference}`;
+
+        const updateVisual = (value) => {
+          ring.style.strokeDashoffset = `${circumference - (circumference * value) / 100}`;
+          pct.textContent = `${Math.floor(value)}%`;
+        };
+
+        const finishLoader = () => {
+          loader.classList.add('hide');
+          document.body.classList.remove('is-loading');
+
+          loader.addEventListener(
+            'transitionend',
+            () => {
+              loader.remove();
+            },
+            { once: true },
+          );
+        };
+
+        const tick = () => {
+          if (!isLoaded) {
+            targetProgress = Math.min(92, targetProgress + Math.random() * 4 + 1.5);
+          } else {
+            targetProgress = 100;
+          }
+
+          progress += (targetProgress - progress) * 0.12;
+
+          if (isLoaded && 100 - progress < 0.35) {
+            progress = 100;
+          }
+
+          updateVisual(progress);
+
+          if (progress >= 100) {
+            finishLoader();
+            return;
+          }
+
+          rafId = window.requestAnimationFrame(tick);
+        };
+
+        rafId = window.requestAnimationFrame(tick);
+
+        window.addEventListener(
+          'load',
+          () => {
+            isLoaded = true;
+          },
+          { once: true },
+        );
+
+        // Fallback, щоб лоадер не завис у разі проблем із подією load.
+        window.setTimeout(() => {
+          if (!isLoaded) {
+            isLoaded = true;
+            if (rafId === null) {
+              rafId = window.requestAnimationFrame(tick);
+            }
+          }
+        }, 12000);
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
