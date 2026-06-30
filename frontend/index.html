@@ -393,7 +393,11 @@
         line-height: 1.35;
         color: var(--amber);
         text-align: center;
-        max-width: 92vw;
+        width: min(92vw, 430px);
+        padding-inline: 8px;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        hyphens: auto;
         min-height: 1.35em;
         margin-bottom: 24px;
         height: auto;
@@ -485,7 +489,7 @@
 
         .status {
           font-size: 11px;
-          max-width: 94vw;
+          width: min(94vw, 360px);
           min-height: 2.7em;
           margin-bottom: 18px;
         }
@@ -508,6 +512,29 @@
         .bar-labels {
           font-size: 9px;
           letter-spacing: 1.1px;
+        }
+
+        .status {
+          font-size: 10px;
+          min-height: 2.9em;
+          margin-bottom: 14px;
+        }
+      }
+
+      @media (max-height: 700px) {
+        .core {
+          width: 102px;
+          height: 102px;
+          margin-bottom: 18px;
+        }
+
+        .tagline {
+          margin-bottom: 8px;
+        }
+
+        .status {
+          min-height: 2.7em;
+          margin-bottom: 12px;
         }
       }
     </style>
