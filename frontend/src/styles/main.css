@@ -150,6 +150,47 @@
   --shadow-xl: 0 24px 64px rgba(0,0,0,.8), 0 8px 16px rgba(0,0,0,.5);
 }
 
+body.night-home {
+  color-scheme: dark;
+
+  --white:         #F5F3EE;
+  --amber:         #FF8A3D;
+  --red:           #FF3D3D;
+  --dim:           #7A7872;
+
+  --bg-base:        #0E0E10;
+  --bg-subtle:      #151518;
+  --bg-muted:       #242427;
+  --bg-card:        #121214;
+  --bg-overlay:     rgba(14,14,16,.88);
+
+  --border:         rgba(245,243,238,.10);
+  --border-strong:  rgba(255,138,61,.30);
+  --border-focus:   #FF8A3D;
+
+  --text-primary:   #F5F3EE;
+  --text-secondary: #D6D2CB;
+  --text-muted:     #7A7872;
+  --text-disabled:  #525257;
+  --text-inverse:   #0E0E10;
+
+  --accent:         #FF8A3D;
+  --accent-hover:   #FF9B54;
+  --accent-dim:     rgba(255,138,61,.10);
+  --accent-ring:    rgba(255,138,61,.24);
+
+  --blue-color:     #FF8A3D;
+  --blue-dim:       rgba(255,138,61,.10);
+  --success-color:  #FF3D3D;
+  --success-dim:    rgba(255,61,61,.10);
+  --danger-color:   #FF5E57;
+  --danger-dim:     rgba(255,94,87,.10);
+  --warning-color:  #FBBF24;
+  --warning-dim:    rgba(251,191,36,.10);
+
+  --input-bg:       #121214;
+}
+
 /* ─── RESET ──────────────────────────────────── */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

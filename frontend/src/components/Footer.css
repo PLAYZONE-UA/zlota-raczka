@@ -4,6 +4,12 @@
   padding: 2.5rem 1.5rem;
 }
 
+body.night-home .footer {
+  background: linear-gradient(180deg, rgba(17, 17, 20, 0.98), rgba(14, 14, 16, 1));
+  color: #f5f3ee;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .footer__inner {
   max-width: 72rem;
   margin: 0 auto;
@@ -14,6 +20,29 @@
   color: #9ca3af;
   font-size: 0.9rem;
   margin-bottom: 1rem;
+}
+
+body.night-home .footer__brand {
+  color: #7a7872;
+}
+
+.footer__contact {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #666;
+}
+
+body.night-home .footer__contact {
+  color: #d6d2cb;
+}
+
+.footer__contact-link {
+  text-decoration: none;
+  color: #d4a574;
+}
+
+body.night-home .footer__contact-link {
+  color: #ff8a3d;
 }
 
 .footer__btn {

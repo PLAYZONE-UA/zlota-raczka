@@ -1,6 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { OrderModalContext } from '../contexts/OrderModalContext'
+import { useState, useEffect } from 'react'
 import './Home.css'
 
 const services = [
@@ -79,11 +77,14 @@ const services = [
 function Home() {
   const [in_, setIn] = useState(false)
   const [expandedPrice, setExpandedPrice] = useState(null)
-  const { openModal } = useContext(OrderModalContext)
 
   useEffect(() => {
+    document.body.classList.add('night-home')
     const t = setTimeout(() => setIn(true), 60)
-    return () => clearTimeout(t)
+    return () => {
+      clearTimeout(t)
+      document.body.classList.remove('night-home')
+    }
   }, [])
 
   return (
