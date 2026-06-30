@@ -532,16 +532,18 @@
         ];
 
         const minVisibleMs = 3200;
-        const finalSlowFrom = 96;
+        const preLoadCap = 94;
+        const finalPhaseMs = 1200;
         const finishHoldMs = 280;
         const startedAt = performance.now();
 
         let phraseIdx = 0;
         let progress = 0;
-        let targetProgress = 0;
         let isLoaded = false;
         let isFinishing = false;
-        let flickerToken = 0;
+        let finalPhaseStarted = false;
+        let finalStartedAt = 0;
+        let finalStartProgress = 0;
 
         document.body.classList.add('is-loading');
         statusEl.classList.add('show');
@@ -559,33 +561,12 @@
           }, 250);
         }, 1100);
 
-        const setScoreboard = (target) => {
-          const localToken = ++flickerToken;
-          pct.classList.add('flicker');
-          pct.textContent = `${Math.floor(Math.random() * 100)}%`;
-
-          window.setTimeout(() => {
-            if (localToken !== flickerToken) {
-              return;
-            }
-            pct.textContent = `${Math.floor(Math.random() * 100)}%`;
-          }, 35);
-
-          window.setTimeout(() => {
-            if (localToken !== flickerToken) {
-              return;
-            }
-            pct.textContent = `${target}%`;
-            pct.classList.remove('flicker');
-          }, 70);
-        };
-
         const updateVisual = (value) => {
           const safeValue = Math.min(100, Math.max(0, value));
           const rounded = Math.floor(safeValue);
           fill.style.width = `${safeValue}%`;
+          pct.textContent = `${rounded}%`;
           pctSmall.textContent = `${rounded}%`;
-          setScoreboard(rounded);
         };
 
         const finishLoader = () => {
@@ -608,24 +589,27 @@
           );
         };
 
-        const tick = () => {
-          const minDurationPassed = performance.now() - startedAt >= minVisibleMs;
-          const canFinalize = isLoaded && minDurationPassed;
+        const tick = (now) => {
+          const elapsed = now - startedAt;
+          const minDurationPassed = elapsed >= minVisibleMs;
 
-          if (!canFinalize) {
-            targetProgress = Math.min(93, targetProgress + Math.random() * 1.1 + 0.35);
-          } else if (progress < finalSlowFrom) {
-            targetProgress = 99.2;
+          if (!finalPhaseStarted) {
+            progress = Math.min(preLoadCap, (elapsed / minVisibleMs) * preLoadCap);
+
+            if (isLoaded && minDurationPassed) {
+              finalPhaseStarted = true;
+              finalStartedAt = now;
+              finalStartProgress = progress;
+            }
           } else {
-            targetProgress = 100;
+            const finalElapsed = now - finalStartedAt;
+            const finalT = Math.min(1, finalElapsed / finalPhaseMs);
+            progress = finalStartProgress + (100 - finalStartProgress) * finalT;
           }
-
-          const easing = canFinalize && progress >= finalSlowFrom ? 0.028 : 0.1;
-          progress += (targetProgress - progress) * easing;
 
           updateVisual(progress);
 
-          if (canFinalize && progress >= 99.98) {
+          if (finalPhaseStarted && progress >= 100) {
             fill.style.width = '100%';
             pct.textContent = '100%';
             pctSmall.textContent = '100%';
