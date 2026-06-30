@@ -9,21 +9,36 @@
   min-height: 100vh;
 }
 
+body.night-showcase .realizacje {
+  background:
+    radial-gradient(circle at top right, rgba(255, 138, 61, 0.08), transparent 30%),
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.08), transparent 26%),
+    linear-gradient(180deg, #f9f9fb 0%, #ffffff 100%);
+  color: #0e0e10;
+}
+
 /* ─── HERO SECTION ─────────────────────────────── */
 .realizacje__hero {
-  background: #ffffff;
-  color: #111827;
+  background: linear-gradient(180deg, #f9f9fb 0%, #ffffff 100%);
+  color: #0e0e10;
   padding: 4rem 1.5rem;
   text-align: center;
   position: relative;
+  border-bottom: 1px solid rgba(14, 14, 16, 0.06);
+}
+
+body.night-showcase .realizacje__hero {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 138, 61, 0.12), transparent 56%),
+    linear-gradient(180deg, #f9f9fb 0%, #ffffff 100%);
 }
 
 .realizacje__back {
   position: absolute;
   top: 1.5rem;
   left: 1.5rem;
-  background: #0b3d91;
-  color: white;
+  background: linear-gradient(135deg, #ff8a3d, #ff9b54);
+  color: #0e0e10;
   width: 44px;
   height: 44px;
   border-radius: 8px;
@@ -33,13 +48,15 @@
   transition: all 0.3s ease;
   cursor: pointer;
   text-decoration: none;
-  opacity: 0.5;
+  opacity: 0.95;
+  box-shadow: 0 10px 24px rgba(255, 138, 61, 0.2);
 }
 
 .realizacje__back:hover {
-  background: #082d6b;
+  background: linear-gradient(135deg, #ff9b54, #ffb26b);
   transform: translateX(-4px);
   opacity: 1;
+  box-shadow: 0 14px 28px rgba(255, 138, 61, 0.28);
 }
 
 .realizacje__hero h1 {
@@ -48,14 +65,14 @@
   font-weight: 700;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
-  color: #111827;
+  color: #0e0e10;
 }
 
 .realizacje__hero p {
   font-family: 'Roboto', sans-serif;
   font-size: clamp(18px, 4vw, 24px);
   font-weight: 300;
-  color: #666666;
+  color: #5f6368;
   line-height: 1.6;
 }
 
@@ -75,21 +92,22 @@
 /* ─── PROJECT CARD ─────────────────────────────── */
 .project-card {
   background: white;
-  border-radius: 8px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 30px rgba(14, 14, 16, 0.08);
+  border: 1px solid rgba(14, 14, 16, 0.06);
   transition: all 0.3s ease;
 }
 
 .project-card:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(14, 14, 16, 0.12);
+  transform: translateY(-6px);
 }
 
 .project-card__image {
   width: 100%;
   height: 220px;
-  background: #f0f4f8;
+  background: #f4f5f7;
   overflow: hidden;
 }
 
@@ -98,7 +116,7 @@
   grid-template-columns: 1fr 1fr;
   height: 220px;
   gap: 1px;
-  background: #e5e7eb;
+  background: rgba(14, 14, 16, 0.08);
 }
 
 .project-card__images .project-card__image {
@@ -112,7 +130,7 @@
   grid-template-columns: repeat(3, 1fr);
   height: 220px;
   gap: 1px;
-  background: #e5e7eb;
+  background: rgba(14, 14, 16, 0.08);
 }
 
 .project-card__gallery .project-card__image {
@@ -125,8 +143,8 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  background: rgba(11, 61, 145, 0.9);
-  color: white;
+  background: rgba(255, 138, 61, 0.95);
+  color: #0e0e10;
   padding: 0.3rem 0.6rem;
   border-radius: 4px;
   font-size: 0.75rem;
@@ -152,7 +170,7 @@
 .project-card__content h3 {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #111827;
+  color: #0e0e10;
   margin-bottom: 0.5rem;
   line-height: 1.4;
   font-family: 'Poppins', sans-serif;
@@ -160,7 +178,7 @@
 
 .project-card__desc {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: #5f6368;
   line-height: 1.6;
   margin-bottom: 1rem;
   font-family: 'Poppins', sans-serif;
@@ -175,8 +193,8 @@
 .project-meta__time {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #0b3d91;
-  background: #eff6ff;
+  color: #0e0e10;
+  background: rgba(16, 185, 129, 0.12);
   padding: 0.4rem 0.9rem;
   border-radius: 4px;
 }
@@ -220,7 +238,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(14, 14, 16, 0.88);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -358,6 +376,27 @@
 
   .realizacje__hero h1 {
     font-size: 1.4rem;
+  }
+
+  .realizacje__back {
+    width: 34px;
+    height: 34px;
+  }
+
+  .project-card {
+    border-radius: 14px;
+  }
+
+  .project-card__content {
+    padding: 0.9rem;
+  }
+
+  .project-card__content h3 {
+    font-size: 0.95rem;
+  }
+
+  .project-card__desc {
+    font-size: 0.8rem;
   }
 
   .realizacje__hero p {

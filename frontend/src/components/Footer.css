@@ -10,6 +10,12 @@ body.night-home .footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+body.night-showcase .footer {
+  background: linear-gradient(180deg, #ffffff 0%, #f9f9fb 100%);
+  color: #0e0e10;
+  border-top: 1px solid rgba(14, 14, 16, 0.08);
+}
+
 .footer__inner {
   max-width: 72rem;
   margin: 0 auto;
@@ -26,6 +32,10 @@ body.night-home .footer__brand {
   color: #7a7872;
 }
 
+body.night-showcase .footer__brand {
+  color: #5f6368;
+}
+
 .footer__contact {
   margin-top: 12px;
   font-size: 14px;
@@ -36,12 +46,20 @@ body.night-home .footer__contact {
   color: #d6d2cb;
 }
 
+body.night-showcase .footer__contact {
+  color: #5f6368;
+}
+
 .footer__contact-link {
   text-decoration: none;
   color: #d4a574;
 }
 
 body.night-home .footer__contact-link {
+  color: #ff8a3d;
+}
+
+body.night-showcase .footer__contact-link {
   color: #ff8a3d;
 }
 

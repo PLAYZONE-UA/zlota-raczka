@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import './NaszeRealizacje.css'
@@ -73,6 +73,15 @@ const projects = [
 function NaszeRealizacje() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxImage, setLightboxImage] = useState(null)
+
+  useEffect(() => {
+    document.body.classList.add('night-showcase')
+
+    return () => {
+      document.body.classList.remove('night-showcase')
+      document.body.style.overflow = ''
+    }
+  }, [])
 
   const openLightbox = (src) => {
     setLightboxImage(src)
